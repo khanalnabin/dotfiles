@@ -16,4 +16,7 @@ Plug 'dense-analysis/ale'
 Plug 'mhinz/vim-startify'
 Plug 'tomasiser/vim-code-dark'
 Plug 'liuchengxu/vista.vim'
+Plug 'pseewald/vim-anyfold'
+Plug 'airblade/vim-gitgutter'
+Plug 'tpope/vim-fugitive'
 call plug#end()
