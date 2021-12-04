@@ -33,7 +33,7 @@ set autochdir                           " Your working directory will always be 
 set signcolumn=yes                      " Leave space for sign before linenumbers
 set title
 set numberwidth=3
-set completeopt=menuone,noselect
+set completeopt=menuone,noinsert
 autocmd FileType * setlocal formatoptions-=cro
 syntax on
 

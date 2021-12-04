@@ -74,3 +74,5 @@ vnoremap <silent>  <C-X> "+x
 nnoremap <silent> <leader>gg <cmd>LazyGit<CR>
 
 nnoremap <leader>z za
+
+nnoremap gd <cmd>ALEGoToDefinition<CR>

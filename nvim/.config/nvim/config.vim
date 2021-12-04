@@ -61,7 +61,7 @@ let g:ale_sign_warning = '⚠️'
 let g:ale_lint_on_text_changed = 'never'
 
 set foldmethod=indent
-set foldlevel=0
+set foldlevel=99
 let g:anyfold_fold_comments=1
 hi Folded term=NONE cterm=NONE
 
