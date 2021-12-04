@@ -60,3 +60,4 @@ let g:ale_sign_warning = '⚠️'
 
 let g:ale_lint_on_text_changed = 'never'
 
+highlight EndOfBuffer ctermfg=black ctermbg=black
