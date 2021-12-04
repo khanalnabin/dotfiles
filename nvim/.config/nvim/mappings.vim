@@ -72,3 +72,5 @@ nnoremap <silent>  <C-X> "+x
 vnoremap <silent>  <C-X> "+x
 
 nnoremap <silent> <leader>gg <cmd>LazyGit<CR>
+
+nnoremap <leader>z za
