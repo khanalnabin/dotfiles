@@ -1,0 +1,299 @@
+# set modifier
+
+#super for Super
+set $super Mod4
+
+#mod for Alt
+set $mod Mod1
+
+# set font
+font pango:DejaVu Sans Mono 12
+# font Space Mono for Powerline 14
+# font pango: Hack Nerd Font Mono 10
+
+#floating modifier
+floating_modifier $super
+
+#autostart
+exec --no-startup-id setxkbmap -option caps:swapescape
+exec --no-startup-id nm-applet 
+exec --no-startup-id nitrogen --restore
+exec --no-startup-id numlockx 
+
+set $picom_start "pkill picom; sleep 1; picom -b"
+exec_always --no-startup-id $picom_start
+
+exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
+exec --no-startup-id greenclip daemon &
+exec --no-startup-id xfce4-power-manager
+exec --no-startup-id emote
+
+
+# start a terminal
+bindsym $mod+Return exec xfce4-terminal 
+
+bindsym $mod+x exec --no-startup-id xkill
+
+#clipboard
+bindsym $super+space exec rofi -modi "clipboard:greenclip print" -show clipboard 
+
+
+#powermenu
+bindsym XF86PowerOff exec rofi -show p -modi p:~/.local/bin/rofi-power-menu -theme ~/.rofi/powermenu.rasi
+bindsym Menu exec rofi -show p -modi p:~/.local/bin/rofi-power-menu -theme ~/.rofi/powermenu.rasi
+
+bindsym $super+F4 exec systemctl suspend
+
+#bindsym $mod+d exec ~/.rofi/launcher.sh
+bindsym $mod+d exec --no-startup-id xfce4-appfinder
+
+bindsym $mod+Shift+d exec --no-startup-id xfce4-appfinder -c
+
+# common apps keybinds
+bindsym Print exec  --no-startup-id  gnome-screenshot 
+bindsym Control+Print exec --no-startup-id gnome-screenshot --window
+bindsym Shift+Print  exec --no-startup-id gnome-screenshot --area
+bindsym $super+l exec --no-startup-id xflock4
+
+
+#change volume
+bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -q set Master 5%+
+bindsym XF86AudioLowerVolume exec --no-startup-id amixer -q set Master 5%-
+bindsym $super+Up exec --no-startup-id amixer -q set Master 5%+
+bindsym $super+Down exec --no-startup-id amixer -q set Master 5%-
+
+bindsym XF86AudioMute exec --no-startup-id amixer -D pulse set Master 1+ toggle
+
+# music control
+bindsym XF86AudioNext exec --no-startup-id playerctl next
+bindsym $super+End exec --no-startup-id playerctl next
+
+bindsym XF86AudioPrev exec --no-startup-id playerctl previous
+bindsym $super+Home exec --no-startup-id playerctl previous
+
+bindsym XF86AudioPlay exec --no-startup-id playerctl play-pause
+bindsym $super+Prior exec --no-startup-id playerctl play-pause
+
+bindsym XF86AudioStop exec --no-startup-id playerctl stop
+bindsym $super+Next exec --no-startup-id playerctl stop
+
+# Sreen brightness controls
+bindsym XF86MonBrightnessUp exec --no-startup-id xbright +500 # increase screen brightness
+bindsym XF86MonBrightnessDown exec --no-startup-id xbright -500 # decrease screen brightness
+bindsym $super+Right exec --no-startup-id xbright +500 # increase screen brightness
+bindsym $super+Left exec --no-startup-id xbright -500 # decrease screen brightness
+
+# kill focused window
+bindsym $mod+Shift+q kill
+
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+# change focus
+# bindsym $mod+Left focus left
+# bindsym $mod+Down focus down
+# bindsym $mod+Up focus up
+# bindsym $mod+Right focus right
+
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+# move focused window
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
+# bindsym $mod+Shift+Left move left
+# bindsym $mod+Shift+Down move down
+# bindsym $mod+Shift+Up move up
+# bindsym $mod+Shift+Right move right
+
+
+# split in horizontal orientation
+bindsym $super+h split h
+
+# split in vertical orientation
+bindsym $super+v split v
+
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen toggle
+
+
+# toggle tiling / floating
+ bindsym $mod+Shift+space floating toggle
+
+# change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle
+
+#workspace variable setting       
+set $workspace1 "1️⃣ 💙"
+set $workspace2 "2️⃣ ⚡"
+set $workspace3 "3️⃣ 📁"
+set $workspace4 "4️⃣ 🎵"
+set $workspace5 "5️⃣ ©️"
+set $workspace6 "6️⃣ 📫"
+set $workspace7 "7️⃣ ☎️"
+set $workspace8 "8️⃣ 🏢"
+set $workspace9 "9️⃣ 📸"
+
+
+#go to workspace
+bindsym $mod+1 workspace  $workspace1
+bindsym $mod+2 workspace  $workspace2
+bindsym $mod+3 workspace  $workspace3
+bindsym $mod+4 workspace  $workspace4
+bindsym $mod+5 workspace  $workspace5
+bindsym $mod+6 workspace  $workspace6
+bindsym $mod+7 workspace  $workspace7
+bindsym $mod+8 workspace  $workspace8
+bindsym $mod+9 workspace  $workspace9
+
+#switch back and forth between workspaces
+bindsym $mod+Tab workspace next
+bindsym $mod+Shift+Tab workspace prev
+bindsym $mod+Control+l workspace next
+bindsym $mod+Control+h workspace prev
+bindsym $mod+Escape workspace back_and_forth
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace $workspace1
+bindsym $mod+Shift+2 move container to workspace $workspace2
+bindsym $mod+Shift+3 move container to workspace $workspace3
+bindsym $mod+Shift+4 move container to workspace $workspace4
+bindsym $mod+Shift+5 move container to workspace $workspace5
+bindsym $mod+Shift+6 move container to workspace $workspace6
+bindsym $mod+Shift+7 move container to workspace $workspace7
+bindsym $mod+Shift+8 move container to workspace $workspace8
+bindsym $mod+Shift+9 move container to workspace $workspace9
+
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+
+# exit i3
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Really, exit?' -b 'Yes' 'i3-msg exit'"
+
+# resize window (you can also use the mouse for that)
+mode "resize" {
+        bindsym Left resize shrink width 2 px or 2 ppt
+        bindsym Down resize grow height 2 px or 2 ppt
+        bindsym Up resize shrink height 2 px or 2 ppt
+        bindsym Right resize grow width 2 px or 2 ppt
+
+        bindsym h resize shrink width 2 px or 2 ppt
+        bindsym k resize grow height 2 px or 2 ppt
+        bindsym j resize shrink height 2 px or 2 ppt
+        bindsym l resize grow width 2 px or 2 ppt
+
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+bindsym $mod+r mode "resize"
+
+
+# panel
+bar {
+        colors {
+        background #2f343f
+        statusline #2f343f
+        separator #4b5262
+
+        # colour of border, background, and text
+        focused_workspace       #2f343f #bf616a #d8dee8
+        active_workspace        #2f343f #2f343f #d8dee8
+        inactive_workspace      #2f343f #2f343f #d8dee8
+        urgent_workspace       #2f343f #ebcb8b #2f343f
+    }
+        status_command exec ~/.local/bin/net-speed
+        font pango:Space Mono for Powerline 12
+        position top
+}
+
+
+
+# window rules, you can find the window class using xprop
+for_window [class=".*"] border pixel 1
+for_window [class="Synapse"] border none
+for_window [class="tic-tac-toe"] border none
+for_window [class="main"] border none
+
+#enable floating for some applications
+for_window [class="Viewnior"] floating enable
+for_window [class="algorithms-visualization"] floating enable
+for_window [class="*_.*"] floating enable
+for_window [class="main"] floating enable
+for_window [class="Flash"] floating enable
+for_window [class="ModernGL"] floating enable
+for_window [class="Xfce4-appfinder"] floating enable
+for_window [class="xdman-Main"] floating enable
+for_window [class="mpv"] floating enable
+for_window [class="p5"] floating enable
+for_window [window_role="pop-up"] floating enable
+for_window [window_role="bubble"] floating enable
+for_window [window_role="task_dialog"] floating enable
+for_window [window_role="Preferences"] floating enable
+for_window [window_type="dialog"] floating enable
+for_window [instance="sf-*"] floating enable move position center
+for_window [class="Nm-connection-editor"] floating enable
+for_window [class="Spotify"] move to workspace $workspace4
+for_window [title=".*Emulator.*"] floating enable border none
+
+assign [class="Microsoft-edge"] $workspace2
+assign [class="Brave"] $workspace2 
+assign [class="firefox"] $workspace2 
+assign [class="Thunar"] $workspace3
+assign [class="Audacious"] $workspace4
+assign [class="Spotify"] $workspace4
+assign [class="Code"] $workspace5
+assign [class="Mailspring"] $workspace6
+assign [class="Telegram"] $workspace7
+assign [class="discord"] $workspace7
+assign [class="vlc"] $workspace9
+# assign [class="mpv"] $workspace9
+# don't steal focus
+focus_on_window_activation smart
+
+# disable focus follows mouse
+focus_follows_mouse no
+
+# for media consumption
+bindsym $mod+m fullscreen disable; floating enable; resize set 400 300; sticky enable; move window to position 1400 780
+
+# return back from media mode
+bindsym $mod+Shift+m  floating disable;sticky disable;
+
+bindsym $super+j exec --no-startup-id xdotool click 5
+bindsym $super+k exec --no-startup-id xdotool click 4
+
+# new mode to open applications
+bindsym $mod+Shift+o mode "$mode_launcher"
+set $mode_launcher Launch: [b]rave [n]autilus vs[c]ode [s]potify [a]udacious [e]vince [m]ailspring
+mode "$mode_launcher" {
+        bindsym b exec --no-startup-id brave; mode "default"
+        bindsym n exec --no-startup-id nautilus; mode "default"
+        bindsym c exec --no-startup-id vscode; mode "default"
+        bindsym s exec --no-startup-id spotify; mode "default"
+        bindsym a exec --no-startup-id audacious; mode "default"
+        bindsym e exec --no-startup-id evince; mode "default"
+        bindsym m exec --no-startup-id mailspring; mode "default"
+
+        # back to normal: Enter or Escape
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+#
+#i3 gaps for transparent borders
+gaps inner 8
+
+# set $color #81a1c1
+set $color #00ffff
+
+# colour of border, background, text, indicator, and child_border
+client.focused              $color  #2f343f #d8dee8 $color  $color
+client.focused_inactive     #2f343f #2f343f #d8dee8 #2f343f #2f343f
+client.unfocused            #2f343f #2f343f #d8dee8 #2f343f #2f343f
+client.urgent               #2f343f #2f343f #d8dee8 #2f343f #2f343f
+client.placeholder          #2f343f #2f343f #d8dee8 #2f343f #2f343f
+client.background           #2f343f
