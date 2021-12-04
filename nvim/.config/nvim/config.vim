@@ -60,4 +60,17 @@ let g:ale_sign_warning = '⚠️'
 
 let g:ale_lint_on_text_changed = 'never'
 
+set foldmethod=indent
+set foldlevel=0
+let g:anyfold_fold_comments=1
+hi Folded term=NONE cterm=NONE
+
+
 highlight EndOfBuffer ctermfg=black ctermbg=black
+
+augroup folding
+  autocmd!
+  au FileType * AnyFoldActivate
+augroup END
+
+
