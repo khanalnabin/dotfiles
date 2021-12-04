@@ -19,4 +19,5 @@ Plug 'liuchengxu/vista.vim'
 Plug 'pseewald/vim-anyfold'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
+Plug 'folke/which-key.nvim'
 call plug#end()
