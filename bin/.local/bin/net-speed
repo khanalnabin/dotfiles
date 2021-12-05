@@ -20,7 +20,7 @@
 # ifaces="eth0"
 #
 # Multiple interfaces:
-ifaces="enp7s0f1 wlp0s20f3 enp0s20f0u1"
+ifaces="enp7s0f1 wlan0 enp0s20f0u1"
 #
 
 # Auto detect interfaces
