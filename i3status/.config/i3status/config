@@ -4,8 +4,8 @@ general {
         markup = pango
         interval = 1
         color_good = '#2f343f'
-		color_degraded = '#ebcb8b'
-		color_bad = '#ba5e57'
+	color_degraded = '#ebcb8b'
+	color_bad = '#ba5e57'
 }
 
 order += "tztime local"
@@ -15,7 +15,7 @@ order += "memory"
 order += "disk /"
 order += "disk /home"
 /* order += "ethernet enp7s0f1" */
-/*order += "wireless wlp0s20f3"*/
+order += "wireless wlp0s20f3"
 order += "volume master"
 order += "battery 1"
 
