@@ -1,7 +1,7 @@
-colorscheme codedark
+colorscheme edge
 
 let g:lightline = {
-     \ 'colorscheme': 'codedark',
+     \ 'colorscheme': 'edge',
      \ 'active': {
      \   'left': [ [ 'mode', 'paste' ], [ 'readonly', 'filename', 'modified' ] ],
      \ 'right': [ [ 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_infos', 'linter_ok' ],
@@ -46,22 +46,6 @@ let g:floaterm_height=1.0
 let g:highlightedyank_highlight_duration = 100 
 highlight HighlightedyankRegion cterm=reverse gui=reverse
 
-" let g:ale_completion_enabled= 0
-" let g:ale_completion_autoimport=1
-" 
-" let g:ale_fix_on_save=1
-" 
-" set omnifunc=ale#completion#OmniFunc
-" 
-" let g:ale_hover_cursor=1
-" 
-" let g:ale_sign_error = '!!'
-" let g:ale_sign_warning = '⚠️'
-" 
-" let g:ale_set_baloons=1
-" 
-" let g:ale_lint_on_text_changed = 'never'
-" 
 set foldmethod=indent
 set foldlevel=99
 let g:anyfold_fold_comments=1
