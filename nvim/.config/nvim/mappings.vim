@@ -55,14 +55,14 @@ imap <M-BS> <C-W>
 nnoremap <silent> H  <cmd>bprevious<CR>
 nnoremap <silent> L <cmd>bnext<CR>
 
-nnoremap <silent> <C-n> <cmd>ALENextWrap<CR>
-nnoremap <silent> <C-p> <cmd>ALEPreviousWrap<CR>
-
-nnoremap <silent> K <cmd>ALEHover<CR>
 
 nnoremap <silent> <leader>w <cmd>w<CR>
 
-inoremap <silent><C-Space> <C-\><C-O>:ALEComplete<CR>
+" nnoremap <silent> <C-n> <cmd>ALENextWrap<CR>
+" nnoremap <silent> <C-p> <cmd>ALEPreviousWrap<CR>
+" 
+" nnoremap <silent> K <cmd>ALEHover<CR>
+" inoremap <silent><C-Space> <C-\><C-O>:ALEComplete<CR>
 
 nnoremap <silent> <leader>bd <cmd>bdelete<CR>
 
@@ -75,4 +75,15 @@ nnoremap <silent> <leader>gg <cmd>LazyGit<CR>
 
 nnoremap <leader>z za
 
-nnoremap gd <cmd>ALEGoToDefinition<CR>
+nnoremap gD <cmd>lua vim.lsp.buf.declaration()<CR>
+nnoremap gd <Cmd>lua vim.lsp.buf.definition()<CR>
+
+nnoremap <silent> <C-k> :lua vim.lsp.buf.signature_help()<CR>
+nnoremap <silent> K :lua vim.lsp.buf.hover()<CR>
+
+nnoremap <silent> <C-n> <cmd>lua vim.lsp.diagnostic.goto_next()<cr>
+nnoremap <silent> <C-p> <cmd>lua vim.lsp.diagnostic.goto_prev()<cr>
+
+
+
+
