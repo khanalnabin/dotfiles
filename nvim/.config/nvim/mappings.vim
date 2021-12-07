@@ -2,10 +2,6 @@
 inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
-
-" nnoremap   <silent>   <C-t>   :FloatermToggle<CR>
-" tnoremap   <silent>   <C-t>   <C-\><C-n>:FloatermToggle<CR>
-
 inoremap <silent> <C-l> <Esc><C-w>li
 inoremap <silent> <C-h> <Esc><C-w>hi
 
@@ -58,12 +54,6 @@ nnoremap <silent> L <cmd>bnext<CR>
 
 nnoremap <silent> <leader>w <cmd>w<CR>
 
-" nnoremap <silent> <C-n> <cmd>ALENextWrap<CR>
-" nnoremap <silent> <C-p> <cmd>ALEPreviousWrap<CR>
-" 
-" nnoremap <silent> K <cmd>ALEHover<CR>
-" inoremap <silent><C-Space> <C-\><C-O>:ALEComplete<CR>
-
 nnoremap <silent> <leader>bd <cmd>bdelete<CR>
 
 nnoremap <silent>  <C-C> "+y
@@ -84,6 +74,12 @@ nnoremap <silent> K :lua vim.lsp.buf.hover()<CR>
 nnoremap <silent> <C-n> <cmd>lua vim.lsp.diagnostic.goto_next()<cr>
 nnoremap <silent> <C-p> <cmd>lua vim.lsp.diagnostic.goto_prev()<cr>
 
+nnoremap <silent> <leader>la <cmd>lua vim.lsp.buf.code_action()<cr>
+nnoremap <silent> <leader>lf <cmd>lua vim.lsp.buf.formatting()<cr>
+nnoremap <silent> <leader>lr <cmd> lua vim.lsp.buf.rename()<cr>
 
-
-
+augroup lsp_document_highlight
+            autocmd!
+            autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
+            autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
+augroup END

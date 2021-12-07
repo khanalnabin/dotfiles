@@ -5,7 +5,6 @@ Plug 'mengelbrecht/lightline-bufferline'
 Plug 'kyazdani42/nvim-web-devicons' 
 Plug 'kdheepak/lazygit.nvim',
 Plug 'kyazdani42/nvim-tree.lua'
-Plug 'joshdick/onedark.vim'
 Plug 'tyru/caw.vim',
 Plug 'voldikss/vim-floaterm',
 Plug 'machakann/vim-highlightedyank'
@@ -22,10 +21,8 @@ Plug 'hrsh7th/nvim-cmp'
 Plug 'hrsh7th/cmp-vsnip'
 Plug 'hrsh7th/vim-vsnip'
 Plug 'mhinz/vim-startify'
-Plug 'tomasiser/vim-code-dark'
 Plug 'sainnhe/edge'
 Plug 'pseewald/vim-anyfold'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
-Plug 'folke/which-key.nvim'
 call plug#end()

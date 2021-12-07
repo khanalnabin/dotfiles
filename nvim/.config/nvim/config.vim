@@ -46,7 +46,7 @@ let g:floaterm_height=1.0
 let g:highlightedyank_highlight_duration = 100 
 highlight HighlightedyankRegion cterm=reverse gui=reverse
 
-set foldmethod=indent
+set foldmethod=syntax
 set foldlevel=99
 let g:anyfold_fold_comments=1
 hi Folded term=NONE cterm=NONE
