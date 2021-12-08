@@ -7,9 +7,7 @@ set $super Mod4
 set $mod Mod1
 
 # set font
-font pango:DejaVu Sans Mono 12
-# font Space Mono for Powerline 14
-# font pango: Hack Nerd Font Mono 10
+font Space Mono Regular 14
 
 #floating modifier
 floating_modifier $super
@@ -128,16 +126,16 @@ bindsym $mod+f fullscreen toggle
 # change focus between tiling / floating windows
 bindsym $mod+space focus mode_toggle
 
-#workspace variable setting       
-set $workspace1 "1️⃣ 💙"
-set $workspace2 "2️⃣ ⚡"
-set $workspace3 "3️⃣ 📁"
-set $workspace4 "4️⃣ 🎵"
-set $workspace5 "5️⃣ ©️"
-set $workspace6 "6️⃣ 📫"
-set $workspace7 "7️⃣ ☎️"
-set $workspace8 "8️⃣ 🏢"
-set $workspace9 "9️⃣ 📸"
+#workspace variable setting       
+set $workspace1 "1:  "
+set $workspace2 "2:  "
+set $workspace3 "3:  "
+set $workspace4 "4:  "
+set $workspace5 "5:  "
+set $workspace6 "6: "
+set $workspace7 "7: "
+set $workspace8 "8: "
+set $workspace9 "9: "
 
 
 #go to workspace
@@ -206,8 +204,9 @@ bar {
         inactive_workspace      #2f343f #2f343f #d8dee8
         urgent_workspace       #2f343f #ebcb8b #2f343f
     }
+	# status_command i3status
         status_command exec ~/.local/bin/net-speed
-        font pango:Space Mono for Powerline 12
+        font pango:Space Mono Regular 11
         position top
 }
 
