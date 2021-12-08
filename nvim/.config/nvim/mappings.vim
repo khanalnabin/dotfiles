@@ -56,11 +56,6 @@ nnoremap <silent> <leader>w <cmd>w<CR>
 
 nnoremap <silent> <leader>bd <cmd>bdelete<CR>
 
-nnoremap <silent>  <C-C> "+y
-vnoremap <silent>  <C-C> "+y
-nnoremap <silent>  <C-X> "+x
-vnoremap <silent>  <C-X> "+x
-
 nnoremap <silent> <leader>gg <cmd>LazyGit<CR>
 
 nnoremap <leader>z za

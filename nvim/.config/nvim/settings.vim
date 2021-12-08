@@ -34,6 +34,7 @@ set signcolumn=yes                      " Leave space for sign before linenumber
 set title
 set numberwidth=3
 set completeopt=menu,menuone,noselect
+set clipboard=unnamedplus
 autocmd FileType * setlocal formatoptions-=cro
 syntax on
 
