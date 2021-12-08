@@ -75,6 +75,7 @@ i3status | (read line && echo "$line" && read line && echo "$line" && read line 
 do
   read line
   update_rate
-  echo ",[{\"name\":\"speed\",\"markup\":\"pango\",\"full_text\":\"<span background='#88c0d0'> ${rate} </span>\" },${line#,\[}" || exit 1
+  t=`date | awk '{print $4 " " $5 " "$1 " " $2 " "$3}'`
+  echo ",[{\"name\":\"speed\",\"markup\":\"pango\",\"full_text\":\"<span background='#88c0d0'> ${rate} </span>\" },{\"name\":\"speed\",\"markup\":\"pango\",\"full_text\":\"<span background='#ff7373'> ${t} </span>\" },${line#,\[}" || exit 1
 done)
 
