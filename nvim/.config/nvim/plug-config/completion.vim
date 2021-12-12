@@ -3,9 +3,9 @@ lua << EOF
   local cmp = require'cmp'
 
   cmp.setup({
-  completion = {
-	  autocomplete = false
-	  },
+--completion = {
+--	  autocomplete = true
+--	  },
     snippet = {
       -- REQUIRED - you must specify a snippet engine
       expand = function(args)
@@ -89,8 +89,3 @@ for type, icon in pairs(signs) do
   vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
 end
 EOF
-
-hi DiagnosticError guifg=#88088F
-hi DiagnosticWarn guifg=DarkOrange
-hi DiagnosticInfo guifg=Blue
-hi DiagnosticHint guifg=Green

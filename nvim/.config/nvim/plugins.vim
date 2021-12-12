@@ -24,5 +24,5 @@ Plug 'sainnhe/edge'
 Plug 'pseewald/vim-anyfold'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-surround'
+Plug 'navarasu/onedark.nvim'
 call plug#end()

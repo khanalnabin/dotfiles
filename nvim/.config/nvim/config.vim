@@ -1,4 +1,3 @@
-colorscheme edge
 
 let g:VM_maps = {}
 let g:VM_maps['Find Under']         = '<C-d>'           
@@ -24,4 +23,5 @@ augroup folding
   au BufWritePre *.* lua vim.lsp.buf.formatting()
 augroup END
 
-
+let g:onedark_style='darker'
+colorscheme onedark

@@ -28,6 +28,4 @@ options = {
   extensions = {},
   theme='edge'
 }
-
-require('neoscroll').setup()
 EOF
