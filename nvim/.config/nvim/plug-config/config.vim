@@ -28,12 +28,9 @@ options = {
   extensions = {},
   theme='edge'
 }
-vim.fn.sign_define("DiagnosticSignError",
-    {text = "", texthl = "Red"})
-vim.fn.sign_define("DiagnosticSignWarn",
-    {text = "", texthl = "Yellow"})
-vim.fn.sign_define("DiagnosticSignInformation",
-    {text = "", texthl = "Blue"})
-vim.fn.sign_define("DiagnosticSignHint",
-    {text = "", texthl = "Aqua"})
 EOF
+
+sign define DiagnosticSignError text= texthl=DiagnosticSignError
+sign define DiagnosticSignWarn text= texthl=DiagnosticSignWarn
+sign define DiagnosticSignHint text= texthl=DiagnosticSignHint
+sign define DiagnosticSignInformation text= texthl=DiagnosticSignInformation
