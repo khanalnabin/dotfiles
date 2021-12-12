@@ -63,7 +63,6 @@ nnoremap <leader>z za
 nnoremap gD <cmd>lua vim.lsp.buf.declaration()<CR>
 nnoremap gd <Cmd>lua vim.lsp.buf.definition()<CR>
 
-nnoremap <silent> <C-k> :lua vim.lsp.buf.signature_help()<CR>
 nnoremap <silent> K :lua vim.lsp.buf.hover()<CR>
 
 nnoremap <silent> <C-n> <cmd>lua vim.lsp.diagnostic.goto_next()<cr>

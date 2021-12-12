@@ -1,12 +1,11 @@
 call plug#begin('~/.local/share/nvim/site/plugged')
-Plug 'itchyny/lightline.vim'
-Plug 'maximbaz/lightline-ale'
-Plug 'mengelbrecht/lightline-bufferline'
+Plug 'akinsho/bufferline.nvim'
+Plug 'nvim-lualine/lualine.nvim'
 Plug 'kyazdani42/nvim-web-devicons' 
 Plug 'kdheepak/lazygit.nvim',
 Plug 'kyazdani42/nvim-tree.lua'
-Plug 'tyru/caw.vim',
-Plug 'voldikss/vim-floaterm',
+Plug 'tyru/caw.vim'
+Plug 'voldikss/vim-floaterm'
 Plug 'machakann/vim-highlightedyank'
 Plug 'chaoren/vim-wordmotion'
 Plug 'jiangmiao/auto-pairs'

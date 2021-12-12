@@ -81,4 +81,16 @@ local opts = {
     server:setup(opts)
 end)
 
+-- local signs = { Error = " ", Warning = " ", Hint = " ", Information = " " }
+ local signs = { Error = "", Warning = "", Hint = "", Information = "" }
+
+for type, icon in pairs(signs) do
+  local hl = "LspDiagnosticsSign" .. type
+  vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
+end
 EOF
+
+hi DiagnosticError guifg=#88088F
+hi DiagnosticWarn guifg=DarkOrange
+hi DiagnosticInfo guifg=Blue
+hi DiagnosticHint guifg=Green
