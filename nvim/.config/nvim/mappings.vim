@@ -71,9 +71,3 @@ nnoremap <silent> <C-p> <cmd>lua vim.lsp.diagnostic.goto_prev()<cr>
 nnoremap <silent> <leader>la <cmd>lua vim.lsp.buf.code_action()<cr>
 nnoremap <silent> <leader>lf <cmd>lua vim.lsp.buf.formatting()<cr>
 nnoremap <silent> <leader>lr <cmd> lua vim.lsp.buf.rename()<cr>
-
-augroup lsp_document_highlight
-            autocmd!
-            autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
-            autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
-augroup END
