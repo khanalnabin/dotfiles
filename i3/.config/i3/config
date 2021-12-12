@@ -17,6 +17,7 @@ exec --no-startup-id setxkbmap -option caps:swapescape
 exec --no-startup-id nm-applet 
 exec --no-startup-id nitrogen --restore
 exec --no-startup-id numlockx 
+exec --no-startup-id xdman -m
 
 set $picom_start "pkill picom; sleep 1; picom -b"
 exec_always --no-startup-id $picom_start
@@ -25,6 +26,7 @@ exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 exec --no-startup-id greenclip daemon &
 exec --no-startup-id xfce4-power-manager
 exec --no-startup-id emote
+exec --no-startup-id loadaccounts
 
 
 # start a terminal
