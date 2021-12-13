@@ -28,6 +28,7 @@ options = {
   extensions = {},
   theme='edge'
 }
+require('nvim-autopairs').setup()
 EOF
 
 sign define DiagnosticSignError text= texthl=DiagnosticSignError
