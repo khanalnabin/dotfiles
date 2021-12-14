@@ -65,9 +65,11 @@ nnoremap gd <Cmd>lua vim.lsp.buf.definition()<CR>
 
 nnoremap <silent> K :lua vim.lsp.buf.hover()<CR>
 
-nnoremap <silent> <C-n> <cmd>lua vim.lsp.diagnostic.goto_next()<cr>
-nnoremap <silent> <C-p> <cmd>lua vim.lsp.diagnostic.goto_prev()<cr>
+nnoremap <silent> <C-n> <cmd>lua vim.lsp.diagnostic.goto_next{wrap = false}<cr>
+nnoremap <silent> <C-p> <cmd>lua vim.lsp.diagnostic.goto_prev{wrap = false}<cr>
 
 nnoremap <silent> <leader>la <cmd>lua vim.lsp.buf.code_action()<cr>
 nnoremap <silent> <leader>lf <cmd>lua vim.lsp.buf.formatting()<cr>
 nnoremap <silent> <leader>lr <cmd> lua vim.lsp.buf.rename()<cr>
+
+nnoremap <silent> <leader>a <CMD>SymbolsOutline<CR>

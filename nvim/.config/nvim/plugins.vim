@@ -24,4 +24,6 @@ Plug 'pseewald/vim-anyfold'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
 Plug 'navarasu/onedark.nvim'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
+Plug 'simrat39/symbols-outline.nvim'
 call plug#end()
