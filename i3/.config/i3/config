@@ -1,16 +1,16 @@
 # set modifier
 
-#super for Super
+set $alt Mod1
 set $super Mod4
 
-#mod for Alt
-set $mod Mod1
+#mod for super
+set $mod Mod4
 
 # set font
-font Space Mono Regular 14
+font pango:Space Mono Regular 9
 
 #floating modifier
-floating_modifier $super
+floating_modifier $mod
 
 #autostart
 exec --no-startup-id setxkbmap -option caps:swapescape
@@ -18,9 +18,12 @@ exec --no-startup-id nm-applet
 exec --no-startup-id nitrogen --restore
 exec --no-startup-id numlockx 
 exec --no-startup-id xdman -m
+exec --no-startup-id xfce4-screensaver &
+exec --no-startup-id mynotes
+exec --no-startup-id screen -d -m -S cmus /usr/bin/cmus --listen /run/user/1000/cmus-socket
 
-set $picom_start "pkill picom; sleep 1; picom -b"
-exec_always --no-startup-id $picom_start
+#set $picom_start "pkill picom; sleep 1; picom -b"
+#exec_always --no-startup-id $picom_start
 
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 exec --no-startup-id greenclip daemon &
@@ -32,18 +35,16 @@ exec --no-startup-id loadaccounts
 # start a terminal
 bindsym $mod+Return exec xfce4-terminal 
 
-bindsym $mod+x exec --no-startup-id xkill
-bindsym $mod+t exec --no-startup-id tabby
-
 #clipboard
-bindsym $super+space exec rofi -modi "clipboard:greenclip print" -show clipboard 
+bindsym $alt+space exec rofi -modi "clipboard:greenclip print" -show clipboard 
+
 
 
 #powermenu
 bindsym XF86PowerOff exec rofi -show p -modi p:~/.local/bin/rofi-power-menu -theme ~/.rofi/powermenu.rasi
 bindsym Menu exec rofi -show p -modi p:~/.local/bin/rofi-power-menu -theme ~/.rofi/powermenu.rasi
 
-bindsym $super+F4 exec systemctl suspend
+bindsym $mod+F4 exec systemctl suspend
 
 #bindsym $mod+d exec ~/.rofi/launcher.sh
 bindsym $mod+d exec --no-startup-id xfce4-appfinder
@@ -54,29 +55,32 @@ bindsym $mod+Shift+d exec --no-startup-id xfce4-appfinder -c
 bindsym Print exec  --no-startup-id  gnome-screenshot 
 bindsym Control+Print exec --no-startup-id gnome-screenshot --window
 bindsym Shift+Print  exec --no-startup-id gnome-screenshot --area
-bindsym $super+l exec --no-startup-id xflock4
+bindsym $mod+x exec --no-startup-id xflock4
 
 
 #change volume
 bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -q set Master 5%+
 bindsym XF86AudioLowerVolume exec --no-startup-id amixer -q set Master 5%-
-bindsym $super+Up exec --no-startup-id amixer -q set Master 5%+
-bindsym $super+Down exec --no-startup-id amixer -q set Master 5%-
+bindsym $mod+Up exec --no-startup-id amixer -q set Master 5%+
+bindsym $mod+Down exec --no-startup-id amixer -q set Master 5%-
 
 bindsym XF86AudioMute exec --no-startup-id amixer -D pulse set Master 1+ toggle
 
 # music control
 bindsym XF86AudioNext exec --no-startup-id playerctl next
-bindsym $super+End exec --no-startup-id playerctl next
+bindsym $mod+End exec --no-startup-id playerctl next
 
 bindsym XF86AudioPrev exec --no-startup-id playerctl previous
-bindsym $super+Home exec --no-startup-id playerctl previous
+bindsym $mod+Home exec --no-startup-id playerctl previous
 
-bindsym XF86AudioPlay exec --no-startup-id playerctl play-pause
-bindsym $super+Prior exec --no-startup-id playerctl play-pause
+bindsym XF86AudioPlay exec --no-startup-id playerctl play
+bindsym $mod+Prior exec --no-startup-id playerctl play
 
-bindsym XF86AudioStop exec --no-startup-id playerctl stop
-bindsym $super+Next exec --no-startup-id playerctl stop
+bindsym XF86AudioStop exec --no-startup-id playerctl pause
+bindsym $mod+Next exec --no-startup-id playerctl pause
+
+bindsym $mod+Insert exec --no-startup-id cmus-remote --play
+bindsym $mod+Delete exec --no-startup-id cmus-remote --stop
 
 # Sreen brightness controls
 bindsym XF86MonBrightnessUp exec --no-startup-id xbright +500 # increase screen brightness
@@ -90,11 +94,6 @@ bindsym $mod+Shift+q kill
 bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
-# change focus
-# bindsym $mod+Left focus left
-# bindsym $mod+Down focus down
-# bindsym $mod+Up focus up
-# bindsym $mod+Right focus right
 
 bindsym $mod+h focus left
 bindsym $mod+j focus down
@@ -113,12 +112,6 @@ bindsym $mod+Shift+l move right
 # bindsym $mod+Shift+Right move right
 
 
-# split in horizontal orientation
-bindsym $super+h split h
-
-# split in vertical orientation
-bindsym $super+v split v
-
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
 
@@ -129,15 +122,15 @@ bindsym $mod+f fullscreen toggle
 # change focus between tiling / floating windows
 bindsym $mod+space focus mode_toggle
 
-#workspace variable setting       
+#workspace variable setting       
 set $workspace1 "1:  "
 set $workspace2 "2:  "
 set $workspace3 "3:  "
 set $workspace4 "4:  "
 set $workspace5 "5:  "
 set $workspace6 "6: "
-set $workspace7 "7: "
-set $workspace8 "8: "
+set $workspace7 "7: "
+set $workspace8 "8: "
 set $workspace9 "9: "
 
 
@@ -252,8 +245,10 @@ assign [class="Code"] $workspace5
 assign [class="Mailspring"] $workspace6
 assign [class="Telegram"] $workspace7
 assign [class="discord"] $workspace7
+assign [class="burp-StartBurp"] $workspace8
+assign [class="Opera developer"] $workspace2
+assign [class="Opera"] $workspace8
 assign [class="vlc"] $workspace9
-# assign [class="mpv"] $workspace9
 # don't steal focus
 focus_on_window_activation smart
 
@@ -266,11 +261,12 @@ bindsym $mod+m fullscreen disable; floating enable; resize set 400 300; sticky e
 # return back from media mode
 bindsym $mod+Shift+m  floating disable;sticky disable;
 
-bindsym $super+j exec --no-startup-id xdotool click 5
-bindsym $super+k exec --no-startup-id xdotool click 4
-
+bindsym $mod+n exec notify-send "$(playerctl metadata title && playerctl metadata album && playerctl metadata artist)"
 # new mode to open applications
 bindsym $mod+Shift+o mode "$mode_launcher"
+
+#bindsym $mod+n exec --no-startup-id notify-send "`playerctl metadata title ; playerctl metadata album ; playerctl metadata artist;`" 
+
 set $mode_launcher Launch: [b]rave [n]autilus vs[c]ode [s]potify [a]udacious [e]vince [m]ailspring
 mode "$mode_launcher" {
         bindsym b exec --no-startup-id brave; mode "default"

@@ -26,4 +26,8 @@ Plug 'tpope/vim-fugitive'
 Plug 'navarasu/onedark.nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
 Plug 'simrat39/symbols-outline.nvim'
+Plug 'kevinhwang91/rnvimr'
+Plug 'conornewton/vim-latex-preview'
+Plug 'gabrielsimoes/cfparser.vim'
+Plug 'christoomey/vim-run-interactive'
 call plug#end()

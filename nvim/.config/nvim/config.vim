@@ -25,3 +25,4 @@ augroup END
 
 let g:onedark_style='darker'
 colorscheme onedark
+set guifont=Space\ Mono:h16

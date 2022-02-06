@@ -26,6 +26,8 @@ inoremap . .<c-g>u
 inoremap ! !<c-g>u
 inoremap ? ?<c-g>u
 
+nnoremap j jj
+
 nmap <silent>  <M-;> <Plug>(caw:hatpos:toggle)<CR>
 vmap <silent>  <M-;> <Plug>(caw:hatpos:toggle)<CR>
 imap <silent>  <M-;> <Esc><Plug>(caw:hatpos:toggle)<CR>i
@@ -72,4 +74,6 @@ nnoremap <silent> <leader>la <cmd>lua vim.lsp.buf.code_action()<cr>
 nnoremap <silent> <leader>lf <cmd>lua vim.lsp.buf.formatting()<cr>
 nnoremap <silent> <leader>lr <cmd> lua vim.lsp.buf.rename()<cr>
 
-nnoremap <silent> <leader>a <CMD>SymbolsOutline<CR>
+nnoremap <silent> <leader>ls <CMD>SymbolsOutline<CR>
+
+nnoremap <silent> <leader>fr <cmd>RnvimrToggle<cr>

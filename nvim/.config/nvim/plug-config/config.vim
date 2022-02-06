@@ -95,6 +95,8 @@ vim.g.symbols_outline = {
         TypeParameter = {icon = "𝙏", hl = "TSParameter"}
     }
 }
+vim.g.rooter_pattern = {'.git', 'Makefile', '_darcs', '.hg', '.bzr', '.svn', 'node_modules', 'CMakeLists.txt', "go.mod", "go.sum"} 
+vim.g.outermost_root = false
 EOF
 
 sign define DiagnosticSignError text= texthl=DiagnosticSignError
