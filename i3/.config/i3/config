@@ -1,13 +1,13 @@
 # set modifier
 
-set $alt Mod1
-set $super Mod4
+# set $alt Mod1
+# set $super Mod4
 
 #mod for super
 set $mod Mod4
 
 # set font
-font pango:Space Mono Regular 9
+font pango:Space Mono Regular 13
 
 #floating modifier
 floating_modifier $mod
@@ -20,7 +20,7 @@ exec --no-startup-id numlockx
 exec --no-startup-id xdman -m
 exec --no-startup-id xfce4-screensaver &
 exec --no-startup-id mynotes
-exec --no-startup-id screen -d -m -S cmus /usr/bin/cmus --listen /run/user/1000/cmus-socket
+# exec --no-startup-id screen -d -m -S cmus /usr/bin/cmus --listen /run/user/1000/cmus-socket
 
 #set $picom_start "pkill picom; sleep 1; picom -b"
 #exec_always --no-startup-id $picom_start
@@ -29,14 +29,13 @@ exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 exec --no-startup-id greenclip daemon &
 exec --no-startup-id xfce4-power-manager
 exec --no-startup-id emote
-exec --no-startup-id loadaccounts
 
 
 # start a terminal
 bindsym $mod+Return exec xfce4-terminal 
 
 #clipboard
-bindsym $alt+space exec rofi -modi "clipboard:greenclip print" -show clipboard 
+bindsym $mod+c exec rofi -modi "clipboard:greenclip print" -show clipboard 
 
 
 
@@ -54,7 +53,7 @@ bindsym $mod+Shift+d exec --no-startup-id xfce4-appfinder -c
 # common apps keybinds
 bindsym Print exec  --no-startup-id  gnome-screenshot 
 bindsym Control+Print exec --no-startup-id gnome-screenshot --window
-bindsym Shift+Print  exec --no-startup-id gnome-screenshot --area
+bindsym Shift+Print exec "gnome-screenshot --area"
 bindsym $mod+x exec --no-startup-id xflock4
 
 
@@ -73,20 +72,22 @@ bindsym $mod+End exec --no-startup-id playerctl next
 bindsym XF86AudioPrev exec --no-startup-id playerctl previous
 bindsym $mod+Home exec --no-startup-id playerctl previous
 
-bindsym XF86AudioPlay exec --no-startup-id playerctl play
-bindsym $mod+Prior exec --no-startup-id playerctl play
+# bindsym $mod+Shift+End exec --no-startup-id cmus-remote --next
+# bindsym $mod+Shift+Home exec --no-startup-id cmus-remote --prev
 
-bindsym XF86AudioStop exec --no-startup-id playerctl pause
-bindsym $mod+Next exec --no-startup-id playerctl pause
+bindsym XF86AudioPlay exec --no-startup-id playerctl play-pause
+bindsym $mod+Prior exec --no-startup-id playerctl play-pause
 
-bindsym $mod+Insert exec --no-startup-id cmus-remote --play
-bindsym $mod+Delete exec --no-startup-id cmus-remote --stop
+bindsym XF86AudioStop exec --no-startup-id playerctl play-pause
+bindsym $mod+Next exec --no-startup-id playerctl play-pause
+
+# bindsym $mod+Insert exec --no-startup-id cmus-remote -u
 
 # Sreen brightness controls
 bindsym XF86MonBrightnessUp exec --no-startup-id xbright +500 # increase screen brightness
 bindsym XF86MonBrightnessDown exec --no-startup-id xbright -500 # decrease screen brightness
-bindsym $super+Right exec --no-startup-id xbright +500 # increase screen brightness
-bindsym $super+Left exec --no-startup-id xbright -500 # decrease screen brightness
+bindsym $mod+Right exec --no-startup-id xbright +500 # increase screen brightness
+bindsym $mod+Left exec --no-startup-id xbright -500 # decrease screen brightness
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -210,11 +211,9 @@ bar {
 
 # window rules, you can find the window class using xprop
 for_window [class=".*"] border pixel 1
-for_window [class="Synapse"] border none
-for_window [class="tic-tac-toe"] border none
-for_window [class="main"] border none
 
 #enable floating for some applications
+for_window [class="SplashScreen"] floating enable
 for_window [class="Viewnior"] floating enable
 for_window [class="algorithms-visualization"] floating enable
 for_window [class="*_.*"] floating enable
@@ -232,23 +231,23 @@ for_window [window_role="Preferences"] floating enable
 for_window [window_type="dialog"] floating enable
 for_window [instance="sf-*"] floating enable move position center
 for_window [class="Nm-connection-editor"] floating enable
-for_window [class="Spotify"] move to workspace $workspace4
+#for_window [class="Spotify"] move to workspace $workspace4
 for_window [title=".*Emulator.*"] floating enable border none
 
-assign [class="Microsoft-edge"] $workspace2
-assign [class="Brave"] $workspace2 
-assign [class="firefox"] $workspace2 
-assign [class="Thunar"] $workspace3
-assign [class="Audacious"] $workspace4
-assign [class="Spotify"] $workspace4
-assign [class="Code"] $workspace5
-assign [class="Mailspring"] $workspace6
-assign [class="Telegram"] $workspace7
-assign [class="discord"] $workspace7
-assign [class="burp-StartBurp"] $workspace8
-assign [class="Opera developer"] $workspace2
-assign [class="Opera"] $workspace8
-assign [class="vlc"] $workspace9
+#assign [class="Microsoft-edge"] $workspace2
+#assign [class="Brave"] $workspace2 
+#assign [class="firefox"] $workspace2 
+#assign [class="Thunar"] $workspace3
+#assign [class="Audacious"] $workspace4
+#assign [class="Spotify"] $workspace4
+#assign [class="Code"] $workspace5
+#assign [class="Mailspring"] $workspace6
+#assign [class="Telegram"] $workspace7
+#assign [class="discord"] $workspace7
+#assign [class="burp-StartBurp"] $workspace8
+#assign [class="Opera developer"] $workspace2
+#assign [class="Opera"] $workspace8
+#assign [class="vlc"] $workspace9
 # don't steal focus
 focus_on_window_activation smart
 
@@ -261,27 +260,8 @@ bindsym $mod+m fullscreen disable; floating enable; resize set 400 300; sticky e
 # return back from media mode
 bindsym $mod+Shift+m  floating disable;sticky disable;
 
-bindsym $mod+n exec notify-send "$(playerctl metadata title && playerctl metadata album && playerctl metadata artist)"
-# new mode to open applications
-bindsym $mod+Shift+o mode "$mode_launcher"
+bindsym $mod+n exec --no-startup-id notify-send "$(playerctl metadata title && playerctl metadata album && playerctl metadata artist)"
 
-#bindsym $mod+n exec --no-startup-id notify-send "`playerctl metadata title ; playerctl metadata album ; playerctl metadata artist;`" 
-
-set $mode_launcher Launch: [b]rave [n]autilus vs[c]ode [s]potify [a]udacious [e]vince [m]ailspring
-mode "$mode_launcher" {
-        bindsym b exec --no-startup-id brave; mode "default"
-        bindsym n exec --no-startup-id nautilus; mode "default"
-        bindsym c exec --no-startup-id vscode; mode "default"
-        bindsym s exec --no-startup-id spotify; mode "default"
-        bindsym a exec --no-startup-id audacious; mode "default"
-        bindsym e exec --no-startup-id evince; mode "default"
-        bindsym m exec --no-startup-id mailspring; mode "default"
-
-        # back to normal: Enter or Escape
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-}
-#
 #i3 gaps for transparent borders
 gaps inner 8
 

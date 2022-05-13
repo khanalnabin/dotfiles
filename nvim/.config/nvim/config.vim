@@ -17,12 +17,6 @@ let g:anyfold_fold_comments=1
 hi Folded term=NONE cterm=NONE
 
 
-augroup folding
-  autocmd!
-  au FileType * AnyFoldActivate
-  au BufWritePre *.* lua vim.lsp.buf.formatting()
-augroup END
 
-let g:onedark_style='darker'
 colorscheme onedark
-set guifont=Space\ Mono:h16
+set guifont=Space\ Mono\ for\ Powerline:h10
