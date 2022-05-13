@@ -30,12 +30,11 @@ options = {
 }
 require('nvim-autopairs').setup()
 require'nvim-treesitter.configs'.setup {
-ensure_installed = {"go"}, -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+ensure_installed = {"go", "bash", "cpp"}, -- one of "all", "maintained" (parsers with maintainers), or a list of languages
   sync_install = false, -- install languages synchronously (only applied to `ensure_installed`)
   ignore_install = { "javascript" }, -- List of parsers to ignore installing
   highlight = {
     enable = true,              -- false will disable the whole extension
-    disable = { "c", "rust" },  -- list of language that will be disabled
     -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
     -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
     -- Using this option may slow down your editor, and you may see some duplicate highlights.
@@ -119,6 +118,38 @@ require("toggleterm").setup({
 		},
 	},
 })
+
+require'alpha'.setup(require'alpha.themes.dashboard'.config)
+require('telescope').load_extension('projects')
+require("project_nvim").setup {}
+
+local dashboard = require("alpha.themes.dashboard")
+dashboard.section.header.val = {
+	[[                               __                ]],
+	[[  ___     ___    ___   __  __ /\_\    ___ ___    ]],
+	[[ / _ `\  / __`\ / __`\/\ \/\ \\/\ \  / __` __`\  ]],
+	[[/\ \/\ \/\  __//\ \_\ \ \ \_/ |\ \ \/\ \/\ \/\ \ ]],
+	[[\ \_\ \_\ \____\ \____/\ \___/  \ \_\ \_\ \_\ \_\]],
+	[[ \/_/\/_/\/____/\/___/  \/__/    \/_/\/_/\/_/\/_/]],
+}
+dashboard.section.buttons.val = {
+	dashboard.button("f", "  Find file", ":Telescope find_files <CR>"),
+	dashboard.button("e", "  New file", ":ene <BAR> startinsert <CR>"),
+	dashboard.button("p", "  Find project", ":Telescope projects <CR>"),
+	dashboard.button("r", "  Recently used files", ":Telescope oldfiles <CR>"),
+	dashboard.button("t", "  Find text", ":Telescope live_grep <CR>"),
+	dashboard.button("c", "  Configuration", ":e ~/.config/nvim/init.vim<CR>"),
+	dashboard.button("q", "  Quit Neovim", ":qa<CR>"),
+}
+
+
+dashboard.section.footer.val = "nabink.com.np"
+
+dashboard.section.footer.opts.hl = "Type"
+dashboard.section.header.opts.hl = "Include"
+dashboard.section.buttons.opts.hl = "Keyword"
+
+dashboard.opts.opts.noautocmd = true
 EOF
 
 sign define DiagnosticSignError text= texthl=DiagnosticSignError
