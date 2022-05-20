@@ -2,3 +2,8 @@ xfce4/
 extra/
 nv/
 .ccls-cache/
+emacs/.emacs.d/.cache/
+emacs/.emacs.d/auto-save-list/
+emacs/.emacs.d/transient/
+emacs/.emacs.d/elpa/
+
