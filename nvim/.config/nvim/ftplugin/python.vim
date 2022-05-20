@@ -1,2 +1,1 @@
-let g:ale_fixers = ['yapf']
-nnoremap <buffer> <leader>r <cmd>w<CR><cmd>FloatermNew python %<CR>
+nnoremap <buffer> <leader>r <cmd>w<CR><cmd>TermExec cmd="python %"<CR>

@@ -213,6 +213,7 @@ bar {
 for_window [class=".*"] border pixel 1
 
 #enable floating for some applications
+for_window [instance="opengl-*"] floating enable
 for_window [class="SplashScreen"] floating enable
 for_window [class="Viewnior"] floating enable
 for_window [class="algorithms-visualization"] floating enable
@@ -231,23 +232,22 @@ for_window [window_role="Preferences"] floating enable
 for_window [window_type="dialog"] floating enable
 for_window [instance="sf-*"] floating enable move position center
 for_window [class="Nm-connection-editor"] floating enable
-#for_window [class="Spotify"] move to workspace $workspace4
 for_window [title=".*Emulator.*"] floating enable border none
 
-#assign [class="Microsoft-edge"] $workspace2
-#assign [class="Brave"] $workspace2 
-#assign [class="firefox"] $workspace2 
-#assign [class="Thunar"] $workspace3
-#assign [class="Audacious"] $workspace4
-#assign [class="Spotify"] $workspace4
-#assign [class="Code"] $workspace5
-#assign [class="Mailspring"] $workspace6
-#assign [class="Telegram"] $workspace7
-#assign [class="discord"] $workspace7
-#assign [class="burp-StartBurp"] $workspace8
-#assign [class="Opera developer"] $workspace2
-#assign [class="Opera"] $workspace8
-#assign [class="vlc"] $workspace9
+assign [class="Microsoft-edge"] $workspace2
+assign [class="Brave"] $workspace2 
+assign [class="firefox"] $workspace2 
+assign [class="Thunar"] $workspace3
+assign [class="Audacious"] $workspace4
+assign [class="spotify"] $workspace4
+assign [class="Code"] $workspace5
+assign [class="Mailspring"] $workspace6
+assign [class="Telegram"] $workspace7
+assign [class="discord"] $workspace7
+assign [class="burp-StartBurp"] $workspace8
+assign [class="Opera developer"] $workspace2
+assign [class="Opera"] $workspace8
+assign [class="vlc"] $workspace9
 # don't steal focus
 focus_on_window_activation smart
 
@@ -260,7 +260,7 @@ bindsym $mod+m fullscreen disable; floating enable; resize set 400 300; sticky e
 # return back from media mode
 bindsym $mod+Shift+m  floating disable;sticky disable;
 
-bindsym $mod+n exec --no-startup-id notify-send "$(playerctl metadata title && playerctl metadata album && playerctl metadata artist)"
+bindsym $mod+n exec --no-startup-id neovide
 
 #i3 gaps for transparent borders
 gaps inner 8

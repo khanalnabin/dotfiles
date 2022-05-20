@@ -23,9 +23,8 @@ inoremap . .<c-g>u
 inoremap ! !<c-g>u
 inoremap ? ?<c-g>u
 
-nmap <silent>  <M-;> <Plug>(caw:hatpos:toggle)<CR>
-vmap <silent>  <M-;> <Plug>(caw:hatpos:toggle)<CR>
-imap <silent>  <M-;> <Esc><Plug>(caw:hatpos:toggle)<CR>i
+nmap <silent>  <leader>/ <Plug>(caw:hatpos:toggle)<CR>
+vmap <silent>  <leader>/ <Plug>(caw:hatpos:toggle)<CR>
 
 nnoremap <C-a>  G$vgg^
 " nnoremap <C-\> <cmd>FloatermToggle<CR>
@@ -49,8 +48,6 @@ nnoremap <silent> L <cmd>bnext<CR>
 
 nnoremap <silent> <leader>w <cmd>w<CR>
 
-nnoremap <silent> <leader>bd <cmd>bdelete<CR>
-
 nnoremap <silent> <leader>gg <cmd>LazyGit<CR>
 
 nnoremap gd <Cmd>lua vim.lsp.buf.definition()<CR>
@@ -60,3 +57,5 @@ nnoremap <silent> K :lua vim.lsp.buf.hover()<CR>
 
 nnoremap <silent> [d <cmd>lua vim.diagnostic.goto_prev{wrap = false}<cr>
 nnoremap <silent> ]d <cmd>lua vim.diagnostic.goto_next{wrap = false}<cr>
+
+"nnoremap <silent> <leader>e <cmd>CHADopen<cr>

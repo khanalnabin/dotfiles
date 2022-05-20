@@ -19,6 +19,7 @@ set conceallevel=0                      " So that I can see `` in markdown files
 set smartindent                         " Makes indenting smart
 set autoindent                          " Good auto indent
 set laststatus=2                        " Always display the status line
+set shiftwidth=4
 set number                              " Line numbers
 " set cursorline                          " Enable highlighting of the current line
 set background=dark                     " tell vim what the background color looks like
