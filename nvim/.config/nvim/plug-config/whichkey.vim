@@ -146,16 +146,12 @@ local mappings = {
       "Workspace Symbols",
     },
   },
-  s = {
-    name = "Search",
-    b = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
-    c = { "<cmd>Telescope colorscheme<cr>", "Colorscheme" },
-    h = { "<cmd>Telescope help_tags<cr>", "Find Help" },
-    M = { "<cmd>Telescope man_pages<cr>", "Man Pages" },
-    r = { "<cmd>Telescope oldfiles<cr>", "Open Recent File" },
-    R = { "<cmd>Telescope registers<cr>", "Registers" },
-    k = { "<cmd>Telescope keymaps<cr>", "Keymaps" },
-    C = { "<cmd>Telescope commands<cr>", "Commands" },
+m = {
+    name = "Make",
+	g = {"<cmd>TermExec cmd=\"genmake\"<cr>", "Generate"},
+	b = {"<cmd>TermExec cmd=\"make build\"<cr>", "Build"},
+	r = {"<cmd>TermExec cmd=\"make run\"<cr>", "Run"},
+	c = {"<cmd>TermExec cmd=\"make clean\"<cr>", "Clean"}
   },
 }
 wk.register(mappings, opts)

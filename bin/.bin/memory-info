@@ -1,0 +1,17 @@
+#!/bin/bash
+meminfo=`free -h | grep 'Mem:'`
+
+used=`echo $meminfo | cut -d" " -f3`
+total=`echo $meminfo | cut -d" " -f2`
+echo " $used "
+
+# #!/bin/sh
+# meminfo=`free -m | grep 'Mem:'`
+# 
+# used=`echo $meminfo | cut -d" " -f3`
+# total=`echo $meminfo | cut -d" " -f2`
+# cached=`echo $meminfo | cut -d" " -f7`
+# 
+# really_used=`expr $used - $cached`
+# 
+# echo "Memory usage: $really_used / $total (Cached: $cached)"

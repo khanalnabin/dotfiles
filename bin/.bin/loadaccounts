@@ -1,0 +1,4 @@
+#!/usr/bin/bash
+google-drive-ocamlfuse -label er.nabinkhanal ~/Drive/er.nabinkhanal/ && 
+google-drive-ocamlfuse -label nabinkhanal688 ~/Drive/nabinkhanal688/ && 
+google-drive-ocamlfuse -label 076bct036 ~/Drive/076bct036/

@@ -40,8 +40,8 @@ bindsym $mod+c exec rofi -modi "clipboard:greenclip print" -show clipboard
 
 
 #powermenu
-bindsym XF86PowerOff exec rofi -show p -modi p:~/.local/bin/rofi-power-menu -theme ~/.rofi/powermenu.rasi
-bindsym Menu exec rofi -show p -modi p:~/.local/bin/rofi-power-menu -theme ~/.rofi/powermenu.rasi
+bindsym XF86PowerOff exec rofi -show p -modi p:~/.bin/rofi-power-menu -theme ~/.rofi/powermenu.rasi
+bindsym Menu exec rofi -show p -modi p:~/.bin/rofi-power-menu -theme ~/.rofi/powermenu.rasi
 
 bindsym $mod+F4 exec systemctl suspend
 
@@ -202,7 +202,7 @@ bar {
         urgent_workspace       #2f343f #ebcb8b #2f343f
     }
 	# status_command i3status
-        status_command exec ~/.local/bin/net-speed
+        status_command exec ~/.bin/net-speed
         font pango:Space Mono Regular 11
         position top
 }
@@ -213,26 +213,20 @@ bar {
 for_window [class=".*"] border pixel 1
 
 #enable floating for some applications
+#for_window [title="Figure*"] floating enable
 for_window [instance="opengl-*"] floating enable
+for_window [title="opengl-*"] floating enable
 for_window [class="SplashScreen"] floating enable
 for_window [class="Viewnior"] floating enable
-for_window [class="algorithms-visualization"] floating enable
-for_window [class="*_.*"] floating enable
-for_window [class="main"] floating enable
-for_window [class="Flash"] floating enable
-for_window [class="ModernGL"] floating enable
 for_window [class="Xfce4-appfinder"] floating enable
 for_window [class="xdman-Main"] floating enable
 for_window [class="mpv"] floating enable
-for_window [class="p5"] floating enable
 for_window [window_role="pop-up"] floating enable
 for_window [window_role="bubble"] floating enable
 for_window [window_role="task_dialog"] floating enable
 for_window [window_role="Preferences"] floating enable
 for_window [window_type="dialog"] floating enable
-for_window [instance="sf-*"] floating enable move position center
 for_window [class="Nm-connection-editor"] floating enable
-for_window [title=".*Emulator.*"] floating enable border none
 
 assign [class="Microsoft-edge"] $workspace2
 assign [class="Brave"] $workspace2 
@@ -261,6 +255,7 @@ bindsym $mod+m fullscreen disable; floating enable; resize set 400 300; sticky e
 bindsym $mod+Shift+m  floating disable;sticky disable;
 
 bindsym $mod+n exec --no-startup-id neovide
+bindsym $mod+b exec --no-startup-id emacs
 
 #i3 gaps for transparent borders
 gaps inner 8

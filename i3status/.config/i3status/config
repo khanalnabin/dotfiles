@@ -58,7 +58,7 @@ volume master {
 battery 1 {
 	last_full_capacity = true
         format = "<span background='#a3be8c'>  %status %percentage </span>"
-        format_down = "‼️"
+        format_down = ".."
         status_chr = "++"
         status_bat = "--"
         status_unk = "??"
