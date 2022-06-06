@@ -213,10 +213,7 @@ bar {
 for_window [class=".*"] border pixel 1
 
 #enable floating for some applications
-#for_window [title="Figure*"] floating enable
-for_window [instance="opengl-*"] floating enable
-for_window [title="opengl-*"] floating enable
-for_window [class="SplashScreen"] floating enable
+for_window [class="opengl-*"] floating enable
 for_window [class="Viewnior"] floating enable
 for_window [class="Xfce4-appfinder"] floating enable
 for_window [class="xdman-Main"] floating enable
@@ -248,11 +245,6 @@ focus_on_window_activation smart
 # disable focus follows mouse
 focus_follows_mouse no
 
-# for media consumption
-bindsym $mod+m fullscreen disable; floating enable; resize set 400 300; sticky enable; move window to position 1400 780
-
-# return back from media mode
-bindsym $mod+Shift+m  floating disable;sticky disable;
 
 bindsym $mod+n exec --no-startup-id neovide
 bindsym $mod+b exec --no-startup-id emacs
