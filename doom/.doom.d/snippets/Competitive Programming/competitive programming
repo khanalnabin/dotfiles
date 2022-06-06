@@ -1,0 +1,14 @@
+# -*- mode: snippet -*-
+# name: competitive programming
+# uuid: cp
+# key: /compe
+# condition: t
+# --
+\#include <bits/stdc++.h>
+using namespace std;
+
+using ll = long long;
+
+int main(){
+    $0
+}
