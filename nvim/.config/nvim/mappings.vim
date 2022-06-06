@@ -9,11 +9,11 @@ inoremap <silent> <C-h> <Esc><C-w>hi
 nnoremap J m`YP``
 vnoremap J m`YP``v``
 
-nnoremap f ^
-vnoremap f ^
-
-nnoremap F $
-vnoremap F $
+" nnoremap f ^
+" vnoremap f ^
+" 
+" nnoremap F $
+" vnoremap F $
 
 nnoremap Y y$
 
@@ -23,12 +23,10 @@ inoremap . .<c-g>u
 inoremap ! !<c-g>u
 inoremap ? ?<c-g>u
 
-nmap <silent>  <leader>/ <Plug>(caw:hatpos:toggle)<CR>
-vmap <silent>  <leader>/ <Plug>(caw:hatpos:toggle)<CR>
+nmap <silent>  <leader>/ <Plug>(caw:zeropos:toggle)<CR>
+vmap <silent>  <leader>/ <Plug>(caw:zeropos:toggle)<CR>
 
 nnoremap <C-a>  G$vgg^
-" nnoremap <C-\> <cmd>FloatermToggle<CR>
-" tnoremap <C-\> <C-\><C-n><cmd>FloatermToggle<CR>
 
 nnoremap <C-h> <C-w>h
 nnoremap <C-l> <C-w>l

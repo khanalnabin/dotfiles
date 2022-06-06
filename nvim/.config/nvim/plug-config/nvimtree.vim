@@ -1,7 +1,5 @@
 lua << EOF
 
-vim.g.nvim_tree_respect_buf_cwd = 1
-
 local status_ok, nvim_tree = pcall(require, "nvim-tree")
 if not status_ok then
   return
@@ -23,6 +21,7 @@ nvim_tree.setup {
     "dashboard",
     "alpha",
   },
+  respect_buf_cwd=true,
   open_on_tab = false,
   hijack_cursor = false,
   update_cwd = true,

@@ -11,6 +11,9 @@ let g:floaterm_height=1.0
 let g:highlightedyank_highlight_duration = 100 
 highlight HighlightedyankRegion cterm=reverse gui=reverse
 
+set guifont=Space\ Mono\ for\ Powerline:h10
 
 colorscheme tokyonight 
-set guifont=Space\ Mono\ for\ Powerline:h10
+
+autocmd FileType cpp let b:caw_oneline_comment = '//'
+autocmd FileType cpp let b:caw_wrap_oneline_comment = '//'

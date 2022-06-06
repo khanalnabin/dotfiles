@@ -151,7 +151,7 @@ m = {
 	g = {"<cmd>TermExec cmd=\"genmake\"<cr>", "Generate"},
 	b = {"<cmd>TermExec cmd=\"make build\"<cr>", "Build"},
 	r = {"<cmd>TermExec cmd=\"make run\"<cr>", "Run"},
-	c = {"<cmd>TermExec cmd=\"make clean\"<cr>", "Clean"}
+	c = {"<cmd>TermExec cmd=\"make clean\"<cr>ToggleTerm<cr>", "Clean"}
   },
 }
 wk.register(mappings, opts)

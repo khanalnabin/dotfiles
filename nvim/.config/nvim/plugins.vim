@@ -26,5 +26,4 @@ Plug 'ahmedkhalf/project.nvim'
 Plug 'folke/which-key.nvim'
 Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
 Plug 'kyazdani42/nvim-tree.lua'
-Plug 'nvim-orgmode/orgmode'
 call plug#end()
