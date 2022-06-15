@@ -118,7 +118,8 @@ require("toggleterm").setup({
 })
 
 require'alpha'.setup(require'alpha.themes.dashboard'.config)
-require'telescope'.load_extension('project')
+require'telescope'.load_extension('projects')
+require("telescope").load_extension("ui-select")
 local dashboard = require("alpha.themes.dashboard")
 dashboard.section.header.val = {
 	[[                               __                ]],
@@ -131,7 +132,7 @@ dashboard.section.header.val = {
 dashboard.section.buttons.val = {
 	dashboard.button("f", "  Find file", ":Telescope find_files <CR>"),
 	dashboard.button("e", "  New file", ":ene <BAR> startinsert <CR>"),
-	dashboard.button("p", "  Find project", ":Telescope project <CR>"),
+	dashboard.button("p", "  Find project", ":Telescope projects <CR>"),
 	dashboard.button("r", "  Recently used files", ":Telescope oldfiles <CR>"),
 	dashboard.button("t", "  Find text", ":Telescope live_grep <CR>"),
 	dashboard.button("c", "  Configuration", ":e ~/.config/nvim/init.vim<CR>"),
@@ -149,6 +150,24 @@ dashboard.opts.opts.noautocmd = true
 
 require('gitsigns').setup()
 require('Comment').setup()
+
+require("project_nvim").setup {
+    active = true,
+
+    on_config_done = nil,
+
+    manual_mode = false,
+
+    detection_methods = { "pattern" },
+
+    patterns = {".root", ".git", "_darcs", ".hg", ".bzr", ".svn", "Makefile", "package.json" },
+
+    show_hidden = false,
+
+    silent_chdir = true,
+
+    ignore_lsp = {},
+	}
 EOF
 
 sign define DiagnosticSignError text= texthl=DiagnosticSignError

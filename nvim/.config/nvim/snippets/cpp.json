@@ -38,6 +38,7 @@
 			"",
 			"template<typename T>",
 			"using vec = vector<T>;",
+			"",
 			"int main(){",
 				"\tios::sync_with_stdio(0);\n\tcin.tie(0);",
 				"\n\t$0",
