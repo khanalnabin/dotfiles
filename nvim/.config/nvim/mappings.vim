@@ -1,20 +1,9 @@
-" Use <Tab> and <S-Tab> to navigate through popup menu
-inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-
 inoremap <silent> <C-l> <Esc><C-w>li
 inoremap <silent> <C-h> <Esc><C-w>hi
 
 
 nnoremap J m`YP``
 vnoremap J m`YP``v``
-
-" nnoremap f ^
-" vnoremap f ^
-" 
-" nnoremap F $
-" vnoremap F $
-
 nnoremap Y y$
 
 inoremap , ,<c-g>u
@@ -22,9 +11,6 @@ inoremap <space>  <space><c-g>u
 inoremap . .<c-g>u
 inoremap ! !<c-g>u
 inoremap ? ?<c-g>u
-
-nmap <silent>  <leader>/ <Plug>(caw:zeropos:toggle)<CR>
-vmap <silent>  <leader>/ <Plug>(caw:zeropos:toggle)<CR>
 
 nnoremap <C-a>  G$vgg^
 
@@ -46,8 +32,6 @@ nnoremap <silent> L <cmd>bnext<CR>
 
 nnoremap <silent> <leader>w <cmd>w<CR>
 
-nnoremap <silent> <leader>gg <cmd>LazyGit<CR>
-
 nnoremap gd <Cmd>lua vim.lsp.buf.definition()<CR>
 nnoremap gD <cmd>lua vim.lsp.buf.declaration()<CR>
 
@@ -56,4 +40,3 @@ nnoremap <silent> K :lua vim.lsp.buf.hover()<CR>
 nnoremap <silent> [d <cmd>lua vim.diagnostic.goto_prev{wrap = false}<cr>
 nnoremap <silent> ]d <cmd>lua vim.diagnostic.goto_next{wrap = false}<cr>
 
-"nnoremap <silent> <leader>e <cmd>CHADopen<cr>

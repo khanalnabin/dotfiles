@@ -4,8 +4,8 @@ Plug 'nvim-lualine/lualine.nvim'
 Plug 'kyazdani42/nvim-web-devicons' 
 Plug 'kdheepak/lazygit.nvim',
 Plug 'kyazdani42/nvim-tree.lua'
-Plug 'tyru/caw.vim'
 Plug 'chaoren/vim-wordmotion'
+Plug 'numToStr/Comment.nvim'
 Plug 'windwp/nvim-autopairs'
 Plug 'mg979/vim-visual-multi'
 Plug 'neovim/nvim-lspconfig'
@@ -22,8 +22,12 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend upda
 Plug 'akinsho/toggleterm.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
-Plug 'ahmedkhalf/project.nvim'
 Plug 'folke/which-key.nvim'
 Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
 Plug 'kyazdani42/nvim-tree.lua'
+Plug 'lewis6991/gitsigns.nvim'
+Plug 'kdheepak/lazygit.nvim'
+Plug 'nvim-telescope/telescope-project.nvim'
+Plug 'tpope/vim-surround'
+
 call plug#end()
