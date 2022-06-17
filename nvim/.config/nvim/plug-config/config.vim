@@ -117,9 +117,13 @@ require("toggleterm").setup({
 	},
 })
 
-require'alpha'.setup(require'alpha.themes.dashboard'.config)
+require('alpha').setup(require'alpha.themes.dashboard'.config)
+
+require('telescope').load_extension('media_files')
 require'telescope'.load_extension('projects')
 require("telescope").load_extension("ui-select")
+require'telescope'.load_extension('zoxide')
+
 local dashboard = require("alpha.themes.dashboard")
 dashboard.section.header.val = {
 	[[                               __                ]],

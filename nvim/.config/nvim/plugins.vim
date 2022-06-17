@@ -21,14 +21,17 @@ Plug 'goolord/alpha-nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
 Plug 'akinsho/toggleterm.nvim'
 Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-ui-select.nvim'
+Plug 'nvim-telescope/telescope-media-files.nvim'
+Plug 'jvgrootveld/telescope-zoxide'
 Plug 'folke/which-key.nvim'
 Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
 Plug 'kyazdani42/nvim-tree.lua'
 Plug 'lewis6991/gitsigns.nvim'
 Plug 'kdheepak/lazygit.nvim'
-Plug 'nvim-telescope/telescope-project.nvim'
 Plug 'tpope/vim-surround'
 Plug 'ahmedkhalf/project.nvim'
+Plug 'kevinhwang91/rnvimr'
 call plug#end()

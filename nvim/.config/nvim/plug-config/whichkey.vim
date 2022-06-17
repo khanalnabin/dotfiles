@@ -85,13 +85,18 @@ local mappings = {
   ["q"] = { "<cmd>q!<CR>", "Quit" },
   ["d"] = { "<cmd>bd!<CR>", "Close Buffer" },
   ["h"] = { "<cmd>nohlsearch<CR>", "No Highlight" },
-  ["f"] = {
-    "<cmd>lua require('telescope.builtin').find_files(require('telescope.themes').get_dropdown{previewer = false})<cr>",
-    "Find files",
-  },
-  ["F"] = { "<cmd>Telescope live_grep theme=ivy<cr>", "Find Text" },
   ["p"] = { "<cmd>lua require('telescope').extensions.projects.projects()<cr>", "Projects" },
+  f = {
+	name = "Find",
+	f = {
+	"<cmd>lua require('telescope.builtin').find_files(require('telescope.themes').get_dropdown{previewer = true})<cr>",
+	"Find files",
+	},
 
+  	t = { "<cmd>Telescope live_grep theme=ivy<cr>", "Find Text" },
+  	r = { "<cmd>RnvimrToggle<cr>", "Ranger" },
+	l = {"<cmd>lua require'telescope'.extensions.zoxide.list{}<cr>", "List"}
+  },
 g = {
   name = "Git",
   g = { "<cmd>LazyGit<CR>", "Lazygit" },
