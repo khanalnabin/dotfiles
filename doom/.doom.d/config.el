@@ -77,13 +77,96 @@
 (global-subword-mode 1)
 (setq which-key-idle-delay 0.2)
 
-(global-set-key (kbd "M-/") 'comment-line)
+;; (global-set-key (kbd "M-/") 'comment-line)
 (global-set-key (kbd "M-\\") '+vterm/toggle)
-
-(require 'centaur-tabs)
-
-(define-key evil-normal-state-map "H" 'centaur-tabs-backward)
-(define-key evil-normal-state-map "L" 'centaur-tabs-forward)
 
 (with-eval-after-load 'treemacs
   (define-key treemacs-mode-map [mouse-1] #'treemacs-single-click-expand-action))
+
+(setq completion-ignore-case  t)
+
+(dap-mode 1)
+;; The modes below are optional
+
+(dap-ui-mode 1)
+;; enables mouse hover support
+(dap-tooltip-mode 1)
+;; use tooltips for mouse hover
+;; if it is not enabled `dap-mode' will use the minibuffer.
+(tooltip-mode 1)
+;; displays floating panel with debug buttons
+;; requies emacs 26+
+(dap-ui-controls-mode 1)
+
+(require 'dap-cpptools)
+
+(map! :leader
+      (:prefix ("r" . "run")
+        :desc "C/C++"
+        "c" #'runc
+        :desc "Python"
+        "p" #'runpython
+        :desc "GO"
+        "g" #'rungo
+        ))
+
+
+(defun er-switch-to-previous-buffer ()
+  "Switch to previously open buffer.
+Repeated invocations toggle between the two most recently open buffers."
+  (interactive)
+  (switch-to-buffer-other-frame (other-buffer (current-buffer) 1)))
+
+(defun runc()
+  "Build and runc .cpp files"
+  (interactive)
+  (if (or (string= major-mode "c++-mode") (boundp 'file))
+      (let ((a 10))
+        (if (string= major-mode "c++-mode")
+            (setq file (buffer-file-name (window-buffer (minibuffer-selected-window)))))
+        (evil-write-all nil)
+
+        (setq code-buf-default-directory default-directory)
+        (if (boundp 'buf)
+             (pop-to-buffer buf)
+          (setq buf (+vterm/toggle nil)))
+        (vterm-send-string (concat "cd " code-buf-default-directory "; ") )
+        (vterm-send-string (concat "g++ -o main -O2 -Wall " file " && ./main && rm main"))
+        (vterm-send-return)
+        )))
+
+(defun runpython()
+  "run python files"
+  (interactive)
+  (if (or (string= major-mode "python-mode") (boundp 'file))
+      (let ((a 10))
+        (if (string= major-mode "python-mode")
+            (setq file (buffer-file-name (window-buffer (minibuffer-selected-window)))))
+        (evil-write-all nil)
+
+        (setq code-buf-default-directory default-directory)
+        (if (boundp 'buf)
+             (pop-to-buffer buf)
+          (setq buf (+vterm/toggle nil)))
+        (vterm-send-string (concat "cd " code-buf-default-directory "; ") )
+        (vterm-send-string (concat "python " file ) )
+        (vterm-send-return)
+        )))
+
+(defun rungo()
+  "run python files"
+  (interactive)
+  (if (or (string= major-mode "go-mode") (boundp 'file))
+      (let ((a 10))
+        (if (string= major-mode "go-mode")
+            (setq file (buffer-file-name (window-buffer (minibuffer-selected-window)))))
+        (evil-write-all nil)
+
+        (setq code-buf-default-directory default-directory)
+        (if (boundp 'buf)
+             (pop-to-buffer buf)
+          (setq buf (+vterm/toggle nil)))
+        (vterm-send-string (concat "cd " code-buf-default-directory "; ") )
+        (vterm-send-string (concat "go run " file ) )
+        (vterm-send-return)
+        )))

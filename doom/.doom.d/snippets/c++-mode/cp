@@ -1,0 +1,34 @@
+# key: cp
+# name: cp
+# --
+#include <bits/stdc++.h>
+using namespace std;
+
+#define deb(...) logger(#__VA_ARGS__, __VA_ARGS__)
+template<typename ...Args>
+void logger(string vars, Args&&... values) {
+    cout << vars << " = ";
+    string delim = "";
+    (..., (cout << delim << values, delim = ", "));
+}
+
+typedef long long ll;
+
+typedef vector<int> vi;
+typedef vector<vi> vvi;
+
+typedef vector<float> vf;
+typedef vector<vf> vvf;
+
+typedef vector<long> vl;
+typedef vector<vl> vvl;
+
+typedef vector<ll> vll;
+typedef vector<vll> vvll;
+
+int main(){
+	ios::sync_with_stdio(0);
+	cin.tie(0);
+
+    $0
+}
