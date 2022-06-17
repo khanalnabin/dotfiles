@@ -1,6 +1,7 @@
 xfce4/
 extra/
 nv/
+nvim/.config/nvim/secrets.vim
 .ccls-cache/
 emacs/.emacs.d/.cache/
 emacs/.emacs.d/auto-save-list/

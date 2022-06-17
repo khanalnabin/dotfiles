@@ -19,11 +19,9 @@ exec --no-startup-id nitrogen --restore
 exec --no-startup-id numlockx 
 exec --no-startup-id xdman -m
 exec --no-startup-id xfce4-screensaver &
-exec --no-startup-id mynotes
-# exec --no-startup-id screen -d -m -S cmus /usr/bin/cmus --listen /run/user/1000/cmus-socket
 
-#set $picom_start "pkill picom; sleep 1; picom -b"
-#exec_always --no-startup-id $picom_start
+set $picom_start "pkill picom; sleep 1; picom -b"
+exec_always --no-startup-id $picom_start
 
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 exec --no-startup-id greenclip daemon &
@@ -246,7 +244,7 @@ focus_on_window_activation smart
 focus_follows_mouse no
 
 
-bindsym $mod+n exec --no-startup-id neovide
+bindsym $mod+n exec --no-startup-id xfce4-terminal -e nvim
 bindsym $mod+b exec --no-startup-id emacs
 
 #i3 gaps for transparent borders
