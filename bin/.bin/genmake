@@ -1,8 +1,4 @@
 #!/bin/bash
-#
-if [ ! -d build ]; then
-	mkdir build
-fi
 
 working_directory=$(pwd)
 

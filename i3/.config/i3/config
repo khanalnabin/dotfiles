@@ -19,10 +19,12 @@ exec --no-startup-id nitrogen --restore
 exec --no-startup-id numlockx 
 exec --no-startup-id xdman -m
 exec --no-startup-id xfce4-screensaver &
+exec --no-startup-id optimus-manager-qt
 
 set $picom_start "pkill picom; sleep 1; picom -b"
 exec_always --no-startup-id $picom_start
 
+exec --no-startup-id screen -d -m -S cmus /usr/bin/cmus --listen /run/user/1000/cmus-socket
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 exec --no-startup-id greenclip daemon &
 exec --no-startup-id xfce4-power-manager
@@ -70,8 +72,6 @@ bindsym $mod+End exec --no-startup-id playerctl next
 bindsym XF86AudioPrev exec --no-startup-id playerctl previous
 bindsym $mod+Home exec --no-startup-id playerctl previous
 
-# bindsym $mod+Shift+End exec --no-startup-id cmus-remote --next
-# bindsym $mod+Shift+Home exec --no-startup-id cmus-remote --prev
 
 bindsym XF86AudioPlay exec --no-startup-id playerctl play-pause
 bindsym $mod+Prior exec --no-startup-id playerctl play-pause
@@ -79,7 +79,6 @@ bindsym $mod+Prior exec --no-startup-id playerctl play-pause
 bindsym XF86AudioStop exec --no-startup-id playerctl play-pause
 bindsym $mod+Next exec --no-startup-id playerctl play-pause
 
-# bindsym $mod+Insert exec --no-startup-id cmus-remote -u
 
 # Sreen brightness controls
 bindsym XF86MonBrightnessUp exec --no-startup-id xbright +500 # increase screen brightness
@@ -212,6 +211,7 @@ for_window [class=".*"] border pixel 1
 
 #enable floating for some applications
 for_window [class="opengl-*"] floating enable
+for_window [class="feh"] floating enable
 for_window [class="Viewnior"] floating enable
 for_window [class="Xfce4-appfinder"] floating enable
 for_window [class="xdman-Main"] floating enable
@@ -223,12 +223,14 @@ for_window [window_role="Preferences"] floating enable
 for_window [window_type="dialog"] floating enable
 for_window [class="Nm-connection-editor"] floating enable
 
+for_window [class="spotify"] move window to $workspace4
+
 assign [class="Microsoft-edge"] $workspace2
 assign [class="Brave"] $workspace2 
 assign [class="firefox"] $workspace2 
 assign [class="Thunar"] $workspace3
 assign [class="Audacious"] $workspace4
-assign [class="spotify"] $workspace4
+assign [class="Spotify"] $workspace4
 assign [class="Code"] $workspace5
 assign [class="Mailspring"] $workspace6
 assign [class="Telegram"] $workspace7
