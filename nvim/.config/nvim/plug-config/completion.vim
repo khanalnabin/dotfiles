@@ -32,9 +32,9 @@ local kind_icons = {
 }
 
   cmp.setup({
---completion = {
---	  autocomplete = true
---	  },
+	--completion = {
+  	--autocomplete = true
+  	--},
     snippet = {
       -- REQUIRED - you must specify a snippet engine
       expand = function(args)
@@ -67,7 +67,7 @@ local kind_icons = {
         i = cmp.mapping.abort(),
         c = cmp.mapping.close(),
       }),
-      ['<CR>'] = cmp.mapping.confirm({ select = true }),
+      ['<CR>'] = cmp.mapping.confirm({ select = false }),
 	  },
   formatting = {
 
@@ -86,11 +86,9 @@ local kind_icons = {
     end,
       },
     sources = cmp.config.sources({
-      { name = 'nvim_lsp' },
-      { name = 'vsnip' }, -- For vsnip users.
-      -- { name = 'luasnip' }, -- For luasnip users.
-      -- { name = 'ultisnips' }, -- For ultisnips users.
-      -- { name = 'snippy' }, -- For snippy users.
+	  	{ name = 'nvim_lsp' },
+		{name='nvim_lsp_signature_help', extended_docs=true},
+      	{ name = 'vsnip' }, 
     }, {
       { name = 'buffer' },
     })
@@ -137,7 +135,6 @@ local opts = {
     -- Refer to https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
     server:setup(opts)
 end)
-
 EOF
 let g:vsnip_snippet_dir="/home/nabin/.config/nvim/snippets"
 

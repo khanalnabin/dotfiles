@@ -29,14 +29,15 @@ vnoremap <M-k> :m '<-2<CR>gv=gv
 nnoremap <silent> H  <cmd>bprevious<CR>
 nnoremap <silent> L <cmd>bnext<CR>
 
-
-nnoremap <silent> <leader>w <cmd>w<CR>
-
-nnoremap gd <Cmd>lua vim.lsp.buf.definition()<CR>
+nnoremap gd <cmd>lua vim.lsp.buf.definition()<CR>
 nnoremap gD <cmd>lua vim.lsp.buf.declaration()<CR>
+nnoremap gr <cmd>lua vim.lsp.buf.references()<CR>
 
 nnoremap <silent> K :lua vim.lsp.buf.hover()<CR>
 
-nnoremap <silent> [d <cmd>lua vim.diagnostic.goto_prev{wrap = false}<cr>
-nnoremap <silent> ]d <cmd>lua vim.diagnostic.goto_next{wrap = false}<cr>
+nnoremap <silent> [e <cmd>lua vim.diagnostic.goto_prev{wrap = false}<cr>
+nnoremap <silent> ]e <cmd>lua vim.diagnostic.goto_next{wrap = false}<cr>
 
+nnoremap <C-k> <cmd>lua vim.lsp.buf.signature_help()<cr>
+
+imap <C-H> <C-w>

@@ -1,47 +1,5 @@
 lua << EOF
-require("bufferline").setup{}
-require'lualine'.setup{
-options = {
-    icons_enabled = true,
-    component_separators = { left = '', right = ''},
-    section_separators = { left = '', right = ''},
-    disabled_filetypes = {},
-    always_divide_middle = true,
-  },
-  sections = {
-    lualine_a = {'mode'},
-    lualine_b = {'branch', 'diff'},
-    lualine_c = {'filename'},
-    lualine_x = {{'diagnostics', sources={'nvim_diagnostic', 'coc'}}},
-    lualine_y = {'filetype'},
-    lualine_z = {'location'}
-  },
-  inactive_sections = {
-    lualine_a = {},
-    lualine_b = {},
-    lualine_c = {'filename'},
-    lualine_x = {'location'},
-    lualine_y = {},
-    lualine_z = {}
-  },
-  tabline = {},
-  extensions = {},
-  theme='edge'
-}
-require('nvim-autopairs').setup()
-require'nvim-treesitter.configs'.setup {
-ensure_installed = {"go", "bash", "cpp"}, -- one of "all", "maintained" (parsers with maintainers), or a list of languages
-  sync_install = false, -- install languages synchronously (only applied to `ensure_installed`)
-  ignore_install = { "javascript" }, -- List of parsers to ignore installing
-  highlight = {
-    enable = true,              -- false will disable the whole extension
-    -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
-    -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
-    -- Using this option may slow down your editor, and you may see some duplicate highlights.
-    -- Instead of true it can also be a list of languages
-    additional_vim_regex_highlighting = false,
-  },
-}
+
 vim.g.symbols_outline = {
     highlight_hovered_item = false,
     show_guides = true,
@@ -94,16 +52,59 @@ vim.g.symbols_outline = {
         TypeParameter = {icon = "𝙏", hl = "TSParameter"}
     }
 }
+require("bufferline").setup{}
+require("lualine").setup{
+options = {
+    icons_enabled = true,
+    component_separators = { left = '', right = ''},
+    section_separators = { left = '', right = ''},
+    disabled_filetypes = {},
+    always_divide_middle = true,
+  },
+  sections = {
+    lualine_a = {'mode'},
+    lualine_b = {'branch', 'diff'},
+    lualine_c = {'filename'},
+    lualine_x = {{'diagnostics', sources={'nvim_diagnostic', 'coc'}}},
+    lualine_y = {'filetype'},
+    lualine_z = {'location'}
+  },
+  inactive_sections = {
+    lualine_a = {},
+    lualine_b = {},
+    lualine_c = {'filename'},
+    lualine_x = {'location'},
+    lualine_y = {},
+    lualine_z = {}
+  },
+  tabline = {},
+  extensions = {},
+  theme='edge'
+}
+require('nvim-autopairs').setup()
+require'nvim-treesitter.configs'.setup {
+ensure_installed = {"go", "bash", "cpp"}, -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+  sync_install = false, -- install languages synchronously (only applied to `ensure_installed`)
+  ignore_install = { "javascript" }, -- List of parsers to ignore installing
+  highlight = {
+    enable = true,              -- false will disable the whole extension
+    -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
+    -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
+    -- Using this option may slow down your editor, and you may see some duplicate highlights.
+    -- Instead of true it can also be a list of languages
+    additional_vim_regex_highlighting = false,
+  },
+}
 require("toggleterm").setup({
 	size = 20,
-	open_mapping = [[<c-\>]],
+	open_mapping = [[<m-\>]],
 	hide_numbers = true,
 	shade_filetypes = {},
 	shade_terminals = true,
 	shading_factor = 2,
 	start_in_insert = true,
 	insert_mappings = true,
-	persist_size = true,
+	persist_size = false,
 	direction = "float",
 	close_on_exit = true,
 	shell = vim.o.shell,
@@ -135,7 +136,6 @@ dashboard.section.header.val = {
 }
 dashboard.section.buttons.val = {
 	dashboard.button("f", "  Find file", ":Telescope find_files <CR>"),
-	dashboard.button("e", "  New file", ":ene <BAR> startinsert <CR>"),
 	dashboard.button("p", "  Find project", ":Telescope projects <CR>"),
 	dashboard.button("r", "  Recently used files", ":Telescope oldfiles <CR>"),
 	dashboard.button("t", "  Find text", ":Telescope live_grep <CR>"),

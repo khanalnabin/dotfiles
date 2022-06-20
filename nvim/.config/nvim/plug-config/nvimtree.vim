@@ -149,4 +149,3 @@ nvim_tree.setup {
 }
 
 EOF
-nnoremap <silent> <leader>e :NvimTreeToggle<CR>
