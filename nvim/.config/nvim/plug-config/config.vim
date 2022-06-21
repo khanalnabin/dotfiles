@@ -52,7 +52,7 @@ vim.g.symbols_outline = {
         TypeParameter = {icon = "𝙏", hl = "TSParameter"}
     }
 }
-require("bufferline").setup{}
+
 require("lualine").setup{
 options = {
     icons_enabled = true,
@@ -94,6 +94,15 @@ ensure_installed = {"go", "bash", "cpp"}, -- one of "all", "maintained" (parsers
     -- Instead of true it can also be a list of languages
     additional_vim_regex_highlighting = false,
   },
+ -- ...
+  -- rainbow = {
+  --   enable = true,
+  --   -- disable = { "jsx", "cpp" }, list of languages you want to disable the plugin for
+  --   extended_mode = true, -- Also highlight non-bracket delimiters like html tags, boolean or table: lang -> boolean
+  --   max_file_lines = nil, -- Do not enable for files with more than n lines, int
+  --   -- colors = {}, -- table of hex strings
+  --   -- termcolors = {} -- table of colour name strings
+  -- }
 }
 require("toggleterm").setup({
 	size = 20,
@@ -123,7 +132,6 @@ require('alpha').setup(require'alpha.themes.dashboard'.config)
 require('telescope').load_extension('media_files')
 require'telescope'.load_extension('projects')
 require("telescope").load_extension("ui-select")
-require'telescope'.load_extension('zoxide')
 
 local dashboard = require("alpha.themes.dashboard")
 dashboard.section.header.val = {

@@ -1,6 +1,6 @@
 call plug#begin('~/.local/share/nvim/site/plugged')
-Plug 'akinsho/bufferline.nvim'
 Plug 'nvim-lualine/lualine.nvim'
+Plug 'romgrk/barbar.nvim'
 Plug 'kyazdani42/nvim-web-devicons' 
 Plug 'kdheepak/lazygit.nvim',
 Plug 'kyazdani42/nvim-tree.lua'
@@ -21,13 +21,13 @@ Plug 'hrsh7th/cmp-nvim-lsp-signature-help'
 Plug 'goolord/alpha-nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
 Plug 'nvim-treesitter/nvim-treesitter-textobjects'
+Plug 'p00f/nvim-ts-rainbow'
 Plug 'akinsho/toggleterm.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-ui-select.nvim'
 Plug 'nvim-telescope/telescope-media-files.nvim'
-Plug 'jvgrootveld/telescope-zoxide'
 Plug 'folke/which-key.nvim'
 Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
 Plug 'kyazdani42/nvim-tree.lua'
@@ -36,4 +36,11 @@ Plug 'kdheepak/lazygit.nvim'
 Plug 'tpope/vim-surround'
 Plug 'ahmedkhalf/project.nvim'
 Plug 'kevinhwang91/rnvimr'
+" for dap
+Plug 'mfussenegger/nvim-dap'
+Plug 'alpha2phi/DAPInstall.nvim',
+Plug 'theHamsta/nvim-dap-virtual-text',
+Plug 'rcarriga/nvim-dap-ui',
+Plug 'nvim-telescope/telescope-dap.nvim',
+Plug 'leoluz/nvim-dap-go'
 call plug#end()

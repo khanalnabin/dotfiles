@@ -10,6 +10,7 @@ let g:floaterm_height=1.0
 
 set guifont=Space\ Mono\ for\ Powerline:h10
 
-colorscheme tokyonight 
+colorscheme tokyonight
 
 autocmd BufWritePre <buffer> lua vim.lsp.buf.format{async=true}
+
