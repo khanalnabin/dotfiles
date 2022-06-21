@@ -67,17 +67,18 @@ bindsym XF86AudioMute exec --no-startup-id amixer -D pulse set Master 1+ toggle
 
 # music control
 bindsym XF86AudioNext exec --no-startup-id playerctl next
+bindsym XF86AudioPlay exec --no-startup-id playerctl play-pause
+bindsym XF86AudioPrev exec --no-startup-id playerctl previous
+bindsym XF86AudioStop exec --no-startup-id playerctl play-pause
+
 bindsym $mod+End exec --no-startup-id playerctl next
 
-bindsym XF86AudioPrev exec --no-startup-id playerctl previous
-bindsym $mod+Home exec --no-startup-id playerctl previous
+bindsym $mod+Home exec --no-startup-id playerctl play-pause
 
 
-bindsym XF86AudioPlay exec --no-startup-id playerctl play-pause
-bindsym $mod+Prior exec --no-startup-id playerctl play-pause
+bindsym $mod+Prior exec --no-startup-id playerctl stop
 
-bindsym XF86AudioStop exec --no-startup-id playerctl play-pause
-bindsym $mod+Next exec --no-startup-id playerctl play-pause
+bindsym $mod+Next exec --no-startup-id playerctl prev
 
 
 # Sreen brightness controls
@@ -184,6 +185,17 @@ mode "resize" {
 }
 bindsym $mod+r mode "resize"
 
+mode "open" {
+		bindsym b mode "default" exec --no-startup-id brave-beta
+		bindsym n mode "default" exec --no-startup-id neovide
+		bindsym v mode "default" exec --no-startup-id xfce4-terminal -e nvim
+		bindsym e mode "default" exec --no-startup-id emacs
+		bindsym f mode "default" exec --no-startup-id thunar
+
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+bindsym $mod+o mode "open"
 
 # panel
 bar {
@@ -246,7 +258,7 @@ focus_on_window_activation smart
 focus_follows_mouse no
 
 
-bindsym $mod+n exec --no-startup-id xfce4-terminal -e nvim
+bindsym $mod+n exec --no-startup-id neovide
 bindsym $mod+b exec --no-startup-id emacs
 
 #i3 gaps for transparent borders
