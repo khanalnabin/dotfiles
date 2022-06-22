@@ -19,12 +19,13 @@ exec --no-startup-id nitrogen --restore
 exec --no-startup-id numlockx 
 exec --no-startup-id xdman -m
 exec --no-startup-id xfce4-screensaver &
-exec --no-startup-id optimus-manager-qt
+exec --no-startup-id optimus-manager-qt 
+exec --no-startup-id mocp -S
+exec --no-startup-id mocicon &
 
 set $picom_start "pkill picom; sleep 1; picom -b"
 exec_always --no-startup-id $picom_start
 
-exec --no-startup-id screen -d -m -S cmus /usr/bin/cmus --listen /run/user/1000/cmus-socket
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 exec --no-startup-id greenclip daemon &
 exec --no-startup-id xfce4-power-manager
@@ -71,14 +72,11 @@ bindsym XF86AudioPlay exec --no-startup-id playerctl play-pause
 bindsym XF86AudioPrev exec --no-startup-id playerctl previous
 bindsym XF86AudioStop exec --no-startup-id playerctl play-pause
 
+bindsym $mod+Home exec --no-startup-id playerctl play-pause
 bindsym $mod+End exec --no-startup-id playerctl next
 
-bindsym $mod+Home exec --no-startup-id playerctl play-pause
-
-
 bindsym $mod+Prior exec --no-startup-id playerctl stop
-
-bindsym $mod+Next exec --no-startup-id playerctl prev
+bindsym $mod+Next exec --no-startup-id playerctl previous
 
 
 # Sreen brightness controls
@@ -196,6 +194,22 @@ mode "open" {
         bindsym Escape mode "default"
 }
 bindsym $mod+o mode "open"
+
+
+mode "mocp"{
+		bindsym n mode "default" exec mocp -f 
+		bindsym p mode "default" exec mocp -r
+		bindsym space mode "default" exec mocp -G
+		bindsym r mode "default" exec mocp -t repeat
+		bindsym s mode "default" exec mocp -t shuffle
+		bindsym S mode "default" exec mocp -p
+		bindsym c mode "default" exec notify-send "$(mocp -i | sed -n '3p')" -t 2000
+		bindsym g mode "default" exec xfce4-terminal -e mocp
+
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+bindsym $mod+m mode "mocp"
 
 # panel
 bar {

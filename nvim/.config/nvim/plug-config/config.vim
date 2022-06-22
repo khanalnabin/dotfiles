@@ -185,4 +185,6 @@ EOF
 sign define DiagnosticSignError text= texthl=DiagnosticSignError
 sign define DiagnosticSignWarn text= texthl=DiagnosticSignWarn
 sign define DiagnosticSignHint text= texthl=DiagnosticSignHint
-sign define DiagnosticSignInformation text= texthl=DiagnosticSignInformation
+sign define DapBreakpoint text=🟥 texthl=DapBreakpoint
+sign define DapStopped text=⭐️ texthl=DapStopped
+sign define DapBreakpointRejected text= texthl=DapBreakpointRejected

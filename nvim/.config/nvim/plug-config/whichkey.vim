@@ -172,14 +172,7 @@ m = {
 	b = {"<cmd>TermExec cmd=\"make build\"<cr>", "Build"},
 	r = {"<cmd>TermExec cmd=\"make run\"<cr>", "Run"},
 	c = {"<cmd>TermExec cmd=\"make clean\"<cr>", "Clean"}
-  },
-  c = {
-	  name = "Cmus",
-	  ["<space>"] = {"<cmd> silent !cmus-remote --pause<cr>", "Play/Pause"},
-	  n = {"<cmd>silent !cmus-remote --next<cr>", "Next"},
-	  p = {"<cmd>silent !cmus-remote --prev<cr>", "Previous"},
-	  c = {"<cmd>silent !notify-send $(basename `cmus-remote --query | grep file | awk '{print $2}'`) -t 1000<cr>", "Current"},
-	  }
+  }
 
 }
 wk.register(mappings, opts)
