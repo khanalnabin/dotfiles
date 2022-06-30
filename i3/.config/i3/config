@@ -19,9 +19,7 @@ exec --no-startup-id nitrogen --restore
 exec --no-startup-id numlockx 
 exec --no-startup-id xdman -m
 exec --no-startup-id xfce4-screensaver &
-exec --no-startup-id optimus-manager-qt 
 exec --no-startup-id mocp -S
-exec --no-startup-id mocicon &
 
 set $picom_start "pkill picom; sleep 1; picom -b"
 exec_always --no-startup-id $picom_start
@@ -38,7 +36,7 @@ bindsym $mod+Return exec xfce4-terminal
 #clipboard
 bindsym $mod+c exec rofi -modi "clipboard:greenclip print" -show clipboard 
 
-
+bindsym $mod+x exec xfce4-screensaver-command --lock
 
 #powermenu
 bindsym XF86PowerOff exec rofi -show p -modi p:~/.bin/rofi-power-menu -theme ~/.rofi/powermenu.rasi
@@ -55,7 +53,6 @@ bindsym $mod+Shift+d exec --no-startup-id xfce4-appfinder -c
 bindsym Print exec  --no-startup-id  gnome-screenshot 
 bindsym Control+Print exec --no-startup-id gnome-screenshot --window
 bindsym Shift+Print exec "gnome-screenshot --area"
-bindsym $mod+x exec --no-startup-id xflock4
 
 
 #change volume
@@ -189,6 +186,7 @@ mode "open" {
 		bindsym v mode "default" exec --no-startup-id xfce4-terminal -e nvim
 		bindsym e mode "default" exec --no-startup-id emacs
 		bindsym f mode "default" exec --no-startup-id thunar
+		bindsym r mode "default" exec --no-startup-id feh .routine.jpeg
 
         bindsym Return mode "default"
         bindsym Escape mode "default"
@@ -197,14 +195,15 @@ bindsym $mod+o mode "open"
 
 
 mode "mocp"{
-		bindsym n mode "default" exec mocp -f 
-		bindsym p mode "default" exec mocp -r
-		bindsym space mode "default" exec mocp -G
-		bindsym r mode "default" exec mocp -t repeat
-		bindsym s mode "default" exec mocp -t shuffle
-		bindsym S mode "default" exec mocp -p
-		bindsym c mode "default" exec notify-send "$(mocp -i | sed -n '3p')" -t 2000
-		bindsym g mode "default" exec xfce4-terminal -e mocp
+		bindsym n mode "default" exec  --no-startup-id mocp -f 
+		bindsym p mode "default" exec --no-startup-id mocp -r
+		bindsym space mode "default" exec  --no-startup-id mocp -G
+		bindsym r mode "default" exec  --no-startup-id mocp -t repeat
+		bindsym s mode "default" exec  --no-startup-id mocp -t shuffle
+		bindsym Shift+s mode "default" exec --no-startup-id mocp -p
+		bindsym c mode "default" exec  --no-startup-id notify-send "$(mocp -i | sed -n '3p')" -t 2000
+		bindsym g mode "default" exec  --no-startup-id xfce4-terminal -e mocp
+		bindsym l mode "default" exec  --no-startup-id xfce4-terminal -e ~/.bin/moc-lyrics
 
         bindsym Return mode "default"
         bindsym Escape mode "default"
@@ -237,6 +236,7 @@ for_window [class=".*"] border pixel 1
 
 #enable floating for some applications
 for_window [class="opengl-*"] floating enable
+for_window [class="ModernGL"] floating enable
 for_window [class="feh"] floating enable
 for_window [class="Viewnior"] floating enable
 for_window [class="Xfce4-appfinder"] floating enable
