@@ -12,5 +12,3 @@ set guifont=Space\ Mono\ for\ Powerline:h10
 
 colorscheme tokyonight
 
-autocmd BufWritePre <buffer> lua vim.lsp.buf.format{async=true}
-

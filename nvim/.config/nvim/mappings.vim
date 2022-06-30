@@ -41,6 +41,7 @@ nnoremap <silent> ]e <cmd>lua vim.diagnostic.goto_next{wrap = false}<cr>
 nnoremap <C-k> <cmd>lua vim.lsp.buf.signature_help()<cr>
 
 imap <C-H> <C-w>
+imap <C-BS> <C-w>
 
 nnoremap <M-y> "+y
 vnoremap <M-y> "+y

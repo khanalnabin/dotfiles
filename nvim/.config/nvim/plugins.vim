@@ -36,11 +36,7 @@ Plug 'kdheepak/lazygit.nvim'
 Plug 'tpope/vim-surround'
 Plug 'ahmedkhalf/project.nvim'
 Plug 'kevinhwang91/rnvimr'
-" for dap
-Plug 'mfussenegger/nvim-dap'
-Plug 'alpha2phi/DAPInstall.nvim',
-Plug 'theHamsta/nvim-dap-virtual-text',
-Plug 'rcarriga/nvim-dap-ui',
-Plug 'nvim-telescope/telescope-dap.nvim',
-Plug 'leoluz/nvim-dap-go'
+
+Plug 'simrat39/symbols-outline.nvim'
+
 call plug#end()
