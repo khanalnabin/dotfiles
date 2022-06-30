@@ -203,7 +203,7 @@ mode "mocp"{
 		bindsym Shift+s mode "default" exec --no-startup-id mocp -p
 		bindsym c mode "default" exec  --no-startup-id notify-send "$(mocp -i | sed -n '3p')" -t 2000
 		bindsym g mode "default" exec  --no-startup-id xfce4-terminal -e mocp
-		bindsym l mode "default" exec  --no-startup-id xfce4-terminal -e ~/.bin/moc-lyrics
+		bindsym l mode "default" exec  --no-startup-id xfce4-terminal -e ~/.bin/lyrics
 
         bindsym Return mode "default"
         bindsym Escape mode "default"
