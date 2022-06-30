@@ -1,0 +1,24 @@
+#!/usr/bin/node
+const { getLyrics } = require("lyrics-dumper");
+var spawn = require('child_process').spawn;
+let output  = spawn('mocp', ['-i']);
+let dict = {};
+
+output.stdout.on('data', async function (data) {
+	let result = data.toString();
+	result.split("\n").forEach(function(element){
+		splitted = element.split(":");
+		dict[splitted[0]] = splitted[1]
+
+	})
+	if(dict["State"].trim() == "PLAY"){
+		console.log("Title : ",  dict["SongTitle"])
+		console.log("Artist : ",  dict["Artist"])
+  const lyricsresult = await getLyrics(dict["Artist"]+" " + dict["SongTitle"]);
+  console.log(lyricsresult["lyrics"]); // -> { result object }
+
+}else{
+	console.log("You are not playing any songs")
+}
+});
+

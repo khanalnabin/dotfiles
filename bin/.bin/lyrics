@@ -1,0 +1,6 @@
+#!/bin/bash
+export NODE_PATH=~/.npm-packages/lib/node_modules
+result=""
+node ~/.bin/lyricsjs 1>result
+cat result
+read _
