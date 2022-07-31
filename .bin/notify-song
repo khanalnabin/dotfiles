@@ -1,0 +1,2 @@
+#!/bin/bash
+notify-send "`mpc | sed -n '1p'`" -t 5000 -i "music"

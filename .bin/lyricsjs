@@ -1,0 +1,13 @@
+#!/usr/bin/node
+const { getLyrics } = require("lyrics-dumper");
+var spawn = require('child_process').spawn;
+let output = spawn('mpc');
+let dict = {};
+
+output.stdout.on('data', async function(data) {
+	let result = data.toString();
+	let songResult = result.split('\n')[0]
+	const lyricsresult = await getLyrics(songResult);
+	console.log(lyricsresult["lyrics"]); // -> { result object }
+});
+

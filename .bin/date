@@ -1,0 +1,10 @@
+#!/bin/bash
+TOGGLE=/tmp/.toggle_DATEFORMAT
+DATE=/tmp/.date
+if [ ! -e $DATE ]; then
+	echo '%{F#F0C674} %{F-}'`date | awk '{print $4 " " $5}'`
+elif [ ! -e $TOGGLE ]; then
+	echo '%{F#F0C674} %{F-}'`/usr/share/nepalical/bin/nepaliconv -bs -f "y-m-d"` `date | awk '{print $1}'`
+else
+	echo '%{F#F0C674} %{F-}'`date +'%Y-%m-%d'` `date | awk '{print $1}'`
+fi

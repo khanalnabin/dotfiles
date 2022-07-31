@@ -19,10 +19,12 @@ exec --no-startup-id nitrogen --restore
 exec --no-startup-id numlockx 
 exec --no-startup-id xdman -m
 exec --no-startup-id xfce4-screensaver &
-exec --no-startup-id mocp -S
+exec --no-startup-id polybar -r
+exec --no-startup-id mpc load all
+exec --no-startup-id mpc random on
 
-set $picom_start "pkill picom; sleep 1; picom -b"
-exec_always --no-startup-id $picom_start
+# set $picom_start "pkill picom; sleep 1; picom -b"
+# exec_always --no-startup-id $picom_start
 
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 exec --no-startup-id greenclip daemon &
@@ -31,35 +33,35 @@ exec --no-startup-id emote
 
 
 # start a terminal
-bindsym $mod+Return exec xfce4-terminal 
+bindsym $mod+Return exec --no-startup-id xfce4-terminal 
 
 #clipboard
-bindsym $mod+c exec rofi -modi "clipboard:greenclip print" -show clipboard 
+bindsym $mod+c exec --no-startup-id rofi -modi "clipboard:greenclip print" -show clipboard 
 
-bindsym $mod+x exec xfce4-screensaver-command --lock
+bindsym $mod+x exec --no-startup-id xfce4-screensaver-command --lock
 
 #powermenu
-bindsym XF86PowerOff exec rofi -show p -modi p:~/.bin/rofi-power-menu -theme ~/.rofi/powermenu.rasi
-bindsym Menu exec rofi -show p -modi p:~/.bin/rofi-power-menu -theme ~/.rofi/powermenu.rasi
+# bindsym XF86PowerOff exec  --no-startup-id rofi -show p -modi p:~/.bin/rofi-power-menu -theme ~/.rofi/powermenu.rasi
+bindsym Menu exec  --no-startup-id rofi -show p -modi p:~/.bin/rofi-power-menu -theme ~/.rofi/powermenu.rasi
 
-bindsym $mod+F4 exec systemctl suspend
+bindsym $mod+F4 exec --no-startup-id systemctl suspend
 
-#bindsym $mod+d exec ~/.rofi/launcher.sh
+# bindsym $mod+d exec ~/.rofi/launcher.sh
 bindsym $mod+d exec --no-startup-id xfce4-appfinder
 
 bindsym $mod+Shift+d exec --no-startup-id xfce4-appfinder -c
 
 # common apps keybinds
-bindsym Print exec  --no-startup-id  gnome-screenshot 
-bindsym Control+Print exec --no-startup-id gnome-screenshot --window
-bindsym Shift+Print exec "gnome-screenshot --area"
+bindsym Print exec  --no-startup-id  gnome-screenshot -f "/home/$USER/Pictures/screenshots/$(date)"
+bindsym Control+Print exec --no-startup-id gnome-screenshot --window -f "/home/$USER/Pictures/screenshots/$(date)"
+bindsym Shift+Print exec  --no-startup-id gnome-screenshot --area -f "/home/$USER/Pictures/screenshots/$(date)" 
 
 
 #change volume
-bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -q set Master 5%+
-bindsym XF86AudioLowerVolume exec --no-startup-id amixer -q set Master 5%-
-bindsym $mod+Up exec --no-startup-id amixer -q set Master 5%+
-bindsym $mod+Down exec --no-startup-id amixer -q set Master 5%-
+bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -q set Master 2%+
+bindsym XF86AudioLowerVolume exec --no-startup-id amixer -q set Master 2%-
+bindsym $mod+Up exec --no-startup-id amixer -q set Master 2%+
+bindsym $mod+Down exec --no-startup-id amixer -q set Master 2%-
 
 bindsym XF86AudioMute exec --no-startup-id amixer -D pulse set Master 1+ toggle
 
@@ -86,6 +88,7 @@ bindsym $mod+Left exec --no-startup-id xbright -500 # decrease screen brightness
 bindsym $mod+Shift+q kill
 
 bindsym $mod+w layout tabbed
+bindsym $mod+s layout stacked
 bindsym $mod+e layout toggle split
 
 
@@ -111,7 +114,7 @@ bindsym $mod+f fullscreen toggle
 
 
 # toggle tiling / floating
- bindsym $mod+Shift+space floating toggle
+bindsym $mod+Shift+space floating toggle
 
 # change focus between tiling / floating windows
 bindsym $mod+space focus mode_toggle
@@ -164,70 +167,80 @@ bindsym $mod+Shift+r restart
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Really, exit?' -b 'Yes' 'i3-msg exit'"
 
 # resize window (you can also use the mouse for that)
-mode "resize" {
-        bindsym Left resize shrink width 2 px or 2 ppt
-        bindsym Down resize grow height 2 px or 2 ppt
-        bindsym Up resize shrink height 2 px or 2 ppt
-        bindsym Right resize grow width 2 px or 2 ppt
+mode "resize"  {
+	bindsym Left resize shrink width 2 px or 2 ppt
+		bindsym Down resize grow height 2 px or 2 ppt
+		bindsym Up resize shrink height 2 px or 2 ppt
+		bindsym Right resize grow width 2 px or 2 ppt
 
-        bindsym h resize shrink width 2 px or 2 ppt
-        bindsym k resize grow height 2 px or 2 ppt
-        bindsym j resize shrink height 2 px or 2 ppt
-        bindsym l resize grow width 2 px or 2 ppt
+		bindsym h resize shrink width 2 px or 2 ppt
+		bindsym k resize grow height 2 px or 2 ppt
+		bindsym j resize shrink height 2 px or 2 ppt
+		bindsym l resize grow width 2 px or 2 ppt
 
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
+		bindsym Return mode "default"
+		bindsym Escape mode "default"
 }
 bindsym $mod+r mode "resize"
 
-mode "open" {
-		bindsym b mode "default" exec --no-startup-id brave-beta
-		bindsym n mode "default" exec --no-startup-id neovide --multigrid
+set $mode_launcher Launch  [v]:nvim [n]:neovide [e]:evince [o]:opera [r]:routine [E]:emacs
+mode "$mode_launcher"  {
+	bindsym b mode "default" workspace  $workspace2; exec --no-startup-id brave-beta
 		bindsym v mode "default" exec --no-startup-id xfce4-terminal -e nvim
-		bindsym e mode "default" exec --no-startup-id emacs
+		bindsym n mode "default" exec --no-startup-id neovide --multigrid
+		bindsym z mode "default" exec --no-startup-id zathura
+		bindsym Shift+e mode "default" exec --no-startup-id emacs
+		bindsym e mode "default" exec --no-startup-id evince
+		bindsym o mode "default" exec --no-startup-id opera
+		bindsym d mode "default" exec --no-startup-id opera-developer
 		bindsym f mode "default" exec --no-startup-id thunar
+		bindsym x mode "default" exec --no-startup-id xdman
 		bindsym r mode "default" exec --no-startup-id feh .routine.jpeg
 
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
+		bindsym Return mode "default"
+		bindsym Escape mode "default"
 }
-bindsym $mod+o mode "open"
+bindsym $mod+o mode "$mode_launcher"
 
 
-mode "mocp"{
-		bindsym n mode "default" exec  --no-startup-id mocp -f 
-		bindsym p mode "default" exec --no-startup-id mocp -r
-		bindsym space mode "default" exec  --no-startup-id mocp -G
-		bindsym r mode "default" exec  --no-startup-id mocp -t repeat
-		bindsym s mode "default" exec  --no-startup-id mocp -t shuffle
-		bindsym Shift+s mode "default" exec --no-startup-id mocp -p
-		bindsym c mode "default" exec  --no-startup-id notify-send "$(mocp -i | sed -n '3p')" -t 2000
-		bindsym g mode "default" exec  --no-startup-id xfce4-terminal -e mocp
+mode "mpd"{
+		bindsym n mode "default" exec  --no-startup-id mpc next
+		bindsym p mode "default" exec --no-startup-id mpc prev
+		bindsym space mode "default" exec  --no-startup-id mpc toggle
+		bindsym s mode "default" exec  --no-startup-id mpc random
 		bindsym l mode "default" exec  --no-startup-id xfce4-terminal -e ~/.bin/lyrics
+		bindsym c mode "default" exec  --no-startup-id ~/.bin/notify-song
+		bindsym g mode "default" exec  --no-startup-id xfce4-terminal -e ncmpcpp
 
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
+		bindsym Return mode "default"
+		bindsym Escape mode "default"
 }
-bindsym $mod+m mode "mocp"
+
+bindsym $mod+m mode "mpd"
+
+bindsym $mod+v split v
+bindsym $mod+b split h
 
 # panel
-bar {
-        colors {
-        background #2f343f
-        statusline #2f343f
-        separator #4b5262
-
-        # colour of border, background, and text
-        focused_workspace       #2f343f #bf616a #d8dee8
-        active_workspace        #2f343f #2f343f #d8dee8
-        inactive_workspace      #2f343f #2f343f #d8dee8
-        urgent_workspace       #2f343f #ebcb8b #2f343f
-    }
-	# status_command i3status
-        status_command exec ~/.bin/net-speed
-        font pango:Space Mono Regular 11
-        position top
-}
+# bar {
+# 	colors {
+# 		background #2f343f
+# 			statusline #2f343f
+# 			separator #4b5262
+#
+# # colour of border, background, and text
+# 			focused_workspace       #2f343f #bf616a #d8dee8
+# 			active_workspace        #2f343f #2f343f #d8dee8
+# 			inactive_workspace      #2f343f #2f343f #d8dee8
+# 			urgent_workspace       #2f343f #ebcb8b #2f343f
+# 	}
+# 		# status_command i3status
+# 		# status_command i3blocks
+# 		# status_command exec ~/.bin/net-speed
+# 		status_command polybar
+# 		font pango:Space Mono Regular 11
+# 		position top
+# }
 
 
 
@@ -236,6 +249,7 @@ for_window [class=".*"] border pixel 1
 
 #enable floating for some applications
 for_window [class="opengl-*"] floating enable
+for_window [class="float-*"] floating enable
 for_window [class="ModernGL"] floating enable
 for_window [class="feh"] floating enable
 for_window [class="Viewnior"] floating enable
@@ -252,6 +266,8 @@ for_window [class="Nm-connection-editor"] floating enable
 for_window [class="spotify"] move window to $workspace4
 
 assign [class="Microsoft-edge"] $workspace2
+assign [class="Opera developer"] $workspace8
+assign [class="Opera"] $workspace2
 assign [class="Brave"] $workspace2 
 assign [class="firefox"] $workspace2 
 assign [class="Thunar"] $workspace3
@@ -262,18 +278,13 @@ assign [class="Mailspring"] $workspace6
 assign [class="Telegram"] $workspace7
 assign [class="discord"] $workspace7
 assign [class="burp-StartBurp"] $workspace8
-assign [class="Opera developer"] $workspace2
-assign [class="Opera"] $workspace8
 assign [class="vlc"] $workspace9
+
 # don't steal focus
 focus_on_window_activation smart
 
 # disable focus follows mouse
 focus_follows_mouse no
-
-
-bindsym $mod+n exec --no-startup-id neovide
-bindsym $mod+b exec --no-startup-id emacs
 
 #i3 gaps for transparent borders
 gaps inner 8

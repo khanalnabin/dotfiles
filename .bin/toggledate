@@ -1,0 +1,7 @@
+#!/bin/bash
+DATE=/tmp/.date
+if [ ! -e $DATE ]; then
+    touch $DATE
+else
+    rm $DATE
+fi
